@@ -557,6 +557,13 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           isActive={pathname === "/bonus"}
           onNavigate={onClose}
         />
+        <NavItem
+          href="/coin-win"
+          icon={<CircleDot className="h-5 w-5" strokeWidth={1.75} />}
+          label={t("coinWin")}
+          isActive={pathname === "/coin-win"}
+          onNavigate={onClose}
+        />
       </nav>
 
       <div className="relative z-10 mt-auto space-y-3 border-t border-navy-800 p-4">

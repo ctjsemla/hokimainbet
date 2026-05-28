@@ -9,6 +9,7 @@ import { GamePageShell } from "@/components/games/GamePageShell";
 import { useAuth } from "@/components/providers/AuthProvider";
 import { AnimatedNumber } from "@/components/ui/AnimatedNumber";
 import { DemoBalanceAlerts } from "@/components/ui/DemoBalanceAlerts";
+import { useLoginRequiredAction } from "@/hooks/useLoginRequiredAction";
 import { usePersistDemoBalance } from "@/hooks/usePersistDemoBalance";
 import {
   MULTIPLIERS,
@@ -45,6 +46,7 @@ const AUTO_DROP_MS = 1500;
 export function PlinkoGame() {
   const t = useTranslations("plinko");
   const { user } = useAuth();
+  const { requireLogin } = useLoginRequiredAction();
   const { balance, persistBalance: syncBalance } = usePersistDemoBalance();
 
   const [betAmount, setBetAmount] = useState(50);
@@ -130,6 +132,7 @@ export function PlinkoGame() {
   );
 
   const dropBall = useCallback(async () => {
+    if (!requireLogin(Boolean(user), setBetError)) return false;
     const now = Date.now();
     if (now - lastDropRef.current < DROP_COOLDOWN_MS) return false;
     if (!canDropMore) return false;
@@ -182,8 +185,10 @@ export function PlinkoGame() {
     multipliers,
     rows,
     persistBalance,
+    requireLogin,
     schedulePegFlashes,
     t,
+    user,
   ]);
 
   useEffect(() => {

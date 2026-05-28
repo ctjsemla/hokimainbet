@@ -112,10 +112,9 @@ export function LeaderboardView() {
         fetchLeaderboardStats(),
       ]);
 
-      const filled = fillLeaderboardEntries(board, game, range);
-      setEntries(filled);
-      setStats(board.length > 0 ? boardStats : getFakeLeaderboardStats());
-      recentScoresRef.current = filled;
+      setEntries(board);
+      setStats(boardStats);
+      recentScoresRef.current = board;
 
       if (user) {
         setPersonalLoading(true);
@@ -123,7 +122,7 @@ export function LeaderboardView() {
           user.id,
           game,
           range,
-          filled,
+          board,
         );
         setPersonal(personalStats);
         setPersonalLoading(false);
@@ -134,6 +133,8 @@ export function LeaderboardView() {
       setError(t("loadError"));
       setEntries(fillLeaderboardEntries([], game, range));
       setStats(getFakeLeaderboardStats());
+      setPersonal(null);
+      setPersonalLoading(false);
     } finally {
       setLoading(false);
     }

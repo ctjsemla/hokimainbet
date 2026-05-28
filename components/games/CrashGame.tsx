@@ -11,6 +11,7 @@ import { GamePageShell, gamePanelLeft, gamePanelRight } from "@/components/games
 import { useAuth } from "@/components/providers/AuthProvider";
 import { AnimatedNumber } from "@/components/ui/AnimatedNumber";
 import { DemoBalanceAlerts } from "@/components/ui/DemoBalanceAlerts";
+import { useLoginRequiredAction } from "@/hooks/useLoginRequiredAction";
 import { usePersistDemoBalance } from "@/hooks/usePersistDemoBalance";
 import { generateCrashPoint, tickCrashMultiplier } from "@/lib/crash";
 import { getUserScores, saveScore } from "@/lib/scores";
@@ -54,6 +55,7 @@ function multiplierDisplayStyle(
 export function CrashGame() {
   const t = useTranslations("crash");
   const { user } = useAuth();
+  const { requireLogin } = useLoginRequiredAction();
   const { balance, persistBalance } = usePersistDemoBalance();
 
   const [gameState, setGameState] = useState<GameState>("idle");
@@ -268,6 +270,7 @@ export function CrashGame() {
 
   async function handleStart() {
     if (gameState !== "idle") return;
+    if (!requireLogin(Boolean(user), setBetError)) return;
 
     if (betAmount < MIN_BET) {
       setBetError(t("minBet"));

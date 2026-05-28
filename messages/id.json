@@ -113,7 +113,9 @@
   "common": {
     "comingSoon": "Segera Hadir",
     "soundOn": "Aktifkan suara",
-    "soundOff": "Matikan suara"
+    "soundOff": "Matikan suara",
+    "loginRequiredToPlay": "Lutfen oturum acin ve sonra tekrar deneyin.",
+    "goLogin": "Giris yap"
   },
   "sidebar": {
     "tagline": "Demo • Strategy • Win",
@@ -132,6 +134,7 @@
     "blog": "Blog",
     "leaderboard": "Papan Peringkat",
     "bonus": "Arena Promo",
+    "coinWin": "Coin Win",
     "login": "Masuk",
     "register": "Daftar",
     "logout": "Keluar",
@@ -506,6 +509,48 @@
       "title": "PELAJARI STRATEGI DARI PARA AHLI",
       "cta": "BACA STRATEGI →",
       "empty": "Artikel strategi segera hadir."
+    },
+    "rewards": {
+      "navBadge": "COIN WIN",
+      "navTitle": "KLAIM COIN & PUTAR WHEEL",
+      "navDesc": "Hadiah 10 menit, 1 jam, harian, mingguan + hadiah spesial.",
+      "navCta": "BUKA COIN WIN →",
+      "eyebrow": "COIN WIN",
+      "title": "CLAIM CENTER",
+      "openWheel": "Buka Wheel",
+      "goLogin": "Masuk",
+      "loginRequired": "Silakan masuk untuk mengakses reward Coin Win.",
+      "ready": "Siap diklaim",
+      "claim": "Claim",
+      "claiming": "Mengklaim...",
+      "wheelTitle": "Reward Wheel",
+      "spin": "SPIN",
+      "spinning": "Spinning...",
+      "close": "Tutup",
+      "loadError": "Reward belum bisa dimuat.",
+      "claimError": "Claim gagal. Coba lagi.",
+      "wheelError": "Spin gagal. Coba lagi.",
+      "wheelWinCoins": "Menang {amount} coin",
+      "wheelWinItem": "Hadiah spesial: {item}",
+      "dailyStreak": "Daily Streak",
+      "today": "Hari ini",
+      "dayLabel": "Hari {day}",
+      "wheelTypeMinute": "Minute wheel",
+      "wheelTypeHourly": "Hourly wheel",
+      "wheelTypeDaily": "Daily wheel",
+      "wheelTypeWeekly": "Weekly wheel",
+      "bronzeChest": "Bronze chest",
+      "silverChest": "Silver chest",
+      "goldChest": "Gold chest",
+      "coinsRange": "Coin {range}",
+      "play": "Main",
+      "tableChest": "Chest",
+      "tablePrize": "Prize",
+      "tableOpenedAt": "Opened at",
+      "tableUser": "User",
+      "monthlyClaims": "Monthly claims",
+      "topStreaks": "Top Streaks",
+      "fakePrizeVip": "VIP Pass"
     }
   }
 }

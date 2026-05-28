@@ -113,7 +113,9 @@
   "common": {
     "comingSoon": "Coming Soon",
     "soundOn": "Enable sound",
-    "soundOff": "Mute sound"
+    "soundOff": "Mute sound",
+    "loginRequiredToPlay": "Please sign in before playing.",
+    "goLogin": "Sign in"
   },
   "sidebar": {
     "tagline": "Demo • Strategy • Win",
@@ -132,6 +134,7 @@
     "blog": "Blog",
     "leaderboard": "Leaderboard",
     "bonus": "Arena Promo",
+    "coinWin": "Coin Win",
     "login": "Sign In",
     "register": "Sign Up",
     "logout": "Sign Out",
@@ -506,6 +509,48 @@
       "title": "LEARN STRATEGY FROM THE EXPERTS",
       "cta": "READ STRATEGY →",
       "empty": "Strategy articles coming soon."
+    },
+    "rewards": {
+      "navBadge": "COIN WIN",
+      "navTitle": "CLAIM COINS & SPIN WHEEL",
+      "navDesc": "10-minute, hourly, daily and weekly rewards plus special drops.",
+      "navCta": "OPEN COIN WIN →",
+      "eyebrow": "COIN WIN",
+      "title": "CLAIM CENTER",
+      "openWheel": "Open Wheel",
+      "goLogin": "Sign in",
+      "loginRequired": "Please sign in to access Coin Win rewards.",
+      "ready": "Ready to claim",
+      "claim": "Claim",
+      "claiming": "Claiming...",
+      "wheelTitle": "Reward Wheel",
+      "spin": "SPIN",
+      "spinning": "Spinning...",
+      "close": "Close",
+      "loadError": "Rewards could not be loaded.",
+      "claimError": "Claim failed. Try again.",
+      "wheelError": "Spin failed. Try again.",
+      "wheelWinCoins": "You won {amount} coins",
+      "wheelWinItem": "Special reward: {item}",
+      "dailyStreak": "Daily Streak",
+      "today": "Today",
+      "dayLabel": "Day {day}",
+      "wheelTypeMinute": "Minute wheel",
+      "wheelTypeHourly": "Hourly wheel",
+      "wheelTypeDaily": "Daily wheel",
+      "wheelTypeWeekly": "Weekly wheel",
+      "bronzeChest": "Bronze chest",
+      "silverChest": "Silver chest",
+      "goldChest": "Gold chest",
+      "coinsRange": "Coins {range}",
+      "play": "Play",
+      "tableChest": "Chest",
+      "tablePrize": "Prize",
+      "tableOpenedAt": "Opened at",
+      "tableUser": "User",
+      "monthlyClaims": "Monthly claims",
+      "topStreaks": "Top Streaks",
+      "fakePrizeVip": "VIP Pass"
     }
   }
 }

@@ -4,8 +4,10 @@ import { AnimatePresence, m } from "framer-motion";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useAuth } from "@/components/providers/AuthProvider";
 import { SlotCard } from "@/components/slots/SlotCard";
 import { SlotPlayerModal } from "@/components/slots/SlotPlayerModal";
+import { useLoginRequiredAction } from "@/hooks/useLoginRequiredAction";
 import { useRouter } from "@/i18n/navigation";
 import { getSlotById, slots } from "@/lib/slotsData";
 import type { SlotFilter, SlotGame } from "@/types/slots.types";
@@ -20,10 +22,14 @@ const FILTERS: { key: SlotFilter; labelKey: "filterAll" | "filterPragmatic" | "f
 
 export function SlotsPageView() {
   const t = useTranslations("slots");
+  const tCommon = useTranslations("common");
   const searchParams = useSearchParams();
   const router = useRouter();
+  const { user } = useAuth();
+  const { requireLogin, goToLogin, loginRequiredMessage } = useLoginRequiredAction();
   const [filter, setFilter] = useState<SlotFilter>("all");
   const [activeSlot, setActiveSlot] = useState<SlotGame | null>(null);
+  const [playError, setPlayError] = useState<string | null>(null);
 
   const playId = searchParams.get("play");
 
@@ -31,9 +37,10 @@ export function SlotsPageView() {
     if (!playId) return;
     const slot = getSlotById(playId);
     if (slot) {
+      if (!user) return;
       setActiveSlot(slot);
     }
-  }, [playId]);
+  }, [playId, user]);
 
   const handleCloseModal = useCallback(() => {
     setActiveSlot(null);
@@ -44,10 +51,12 @@ export function SlotsPageView() {
 
   const handlePlay = useCallback(
     (slot: SlotGame) => {
+      if (!requireLogin(Boolean(user), setPlayError)) return;
+      setPlayError(null);
       setActiveSlot(slot);
       router.replace(`/games/slots?play=${slot.id}`, { scroll: false });
     },
-    [router],
+    [requireLogin, router, user],
   );
 
   const filtered = useMemo(
@@ -103,6 +112,20 @@ export function SlotsPageView() {
           </button>
         ))}
       </div>
+      {playError && (
+        <div className="mb-5 rounded-lg border border-orange-500/30 bg-orange-500/10 p-3 text-sm text-orange-300">
+          {playError}
+          {playError === loginRequiredMessage && (
+            <button
+              type="button"
+              onClick={goToLogin}
+              className="ml-2 underline underline-offset-2"
+            >
+              {tCommon("goLogin")}
+            </button>
+          )}
+        </div>
+      )}
 
       <AnimatePresence mode="wait">
         <m.div

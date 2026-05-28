@@ -125,6 +125,19 @@ export function ArenaPromoPageView({ posts }: ArenaPromoPageViewProps) {
           <UpdatedBadge label={t("updatedBadge")} />
         </m.header>
 
+        <PromoBanner className="min-h-[130px]">
+          <div className="flex min-h-[130px] flex-col gap-4 p-6 md:flex-row md:items-center md:justify-between md:p-8">
+            <div>
+              <BonusBadge>{t("rewards.navBadge")}</BonusBadge>
+              <h2 className="mt-2 font-display text-3xl tracking-wide text-white md:text-4xl">
+                {t("rewards.navTitle")}
+              </h2>
+              <p className="mt-1 text-sm text-[#94a3b8]">{t("rewards.navDesc")}</p>
+            </div>
+            <PromoCta href="/coin-win">{t("rewards.navCta")}</PromoCta>
+          </div>
+        </PromoBanner>
+
         {/* Banner 1 — Welcome */}
         <PromoBanner className="min-h-[260px]">
           <div

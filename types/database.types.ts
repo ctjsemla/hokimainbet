@@ -116,6 +116,84 @@ export interface Database {
         };
         Relationships: [];
       };
+      coin_reward_claims: {
+        Row: {
+          id: string;
+          user_id: string;
+          reward_window: string;
+          period_key: string;
+          amount: number;
+          claimed_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          reward_window: string;
+          period_key: string;
+          amount: number;
+          claimed_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          reward_window?: string;
+          period_key?: string;
+          amount?: number;
+          claimed_at?: string;
+        };
+        Relationships: [];
+      };
+      coin_wheel_spins: {
+        Row: {
+          id: string;
+          user_id: string;
+          prize_id: string;
+          prize_label: string;
+          prize_type: string;
+          coin_amount: number;
+          spun_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          prize_id: string;
+          prize_label: string;
+          prize_type: string;
+          coin_amount?: number;
+          spun_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          prize_id?: string;
+          prize_label?: string;
+          prize_type?: string;
+          coin_amount?: number;
+          spun_at?: string;
+        };
+        Relationships: [];
+      };
+      coin_daily_streaks: {
+        Row: {
+          user_id: string;
+          next_day: number;
+          last_claimed_at: string | null;
+          total_claims: number;
+        };
+        Insert: {
+          user_id: string;
+          next_day?: number;
+          last_claimed_at?: string | null;
+          total_claims?: number;
+        };
+        Update: {
+          user_id?: string;
+          next_day?: number;
+          last_claimed_at?: string | null;
+          total_claims?: number;
+        };
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
     Functions: Record<string, never>;
