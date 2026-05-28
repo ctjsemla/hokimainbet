@@ -78,7 +78,7 @@ export function WheelGame() {
     null,
   );
 
-  const isLocked = isSpinning || postSpinWobble || cooldownMs > 0;
+  const isLocked = isSpinning || cooldownMs > 0;
   const cooldownActive = cooldownMs > 0;
 
   const multipliers = useMemo(
@@ -99,6 +99,15 @@ export function WheelGame() {
   }, [cooldownActive]);
 
   useEffect(() => {
+    if (!postSpinWobble) return;
+    const id = setTimeout(() => {
+      setPostSpinWobble(false);
+      setPointerWobble(false);
+    }, 750);
+    return () => clearTimeout(id);
+  }, [postSpinWobble]);
+
+  useEffect(() => {
     if (isSpinning || postSpinWobble) return;
 
     let frameId = 0;
@@ -117,7 +126,7 @@ export function WheelGame() {
     return () => cancelAnimationFrame(frameId);
   }, [isSpinning, postSpinWobble]);
 
-  const finishSpin = useCallback(async () => {
+  const finishSpin = useCallback(() => {
     const pending = pendingSpinRef.current;
     if (!pending) return;
 
@@ -147,14 +156,11 @@ export function WheelGame() {
 
     setTimeout(() => setHighlightPhase("gold"), 120);
 
-    if (won) {
-      await persistBalance(balanceAfterBet + payout);
-      if (user) {
-        await saveScore("wheel", multiplier, bet, payout);
-      }
-    } else if (user) {
-      await saveScore("wheel", 0, bet, 0);
-    }
+    setTimeout(() => {
+      setHighlightPhase("none");
+      setHighlightIndex(null);
+      setLastResult(null);
+    }, WHEEL_RESULT_CLEAR_MS);
 
     const item: SpinHistoryItem = {
       id: `${Date.now()}`,
@@ -165,16 +171,16 @@ export function WheelGame() {
     setHistory((prev) => [item, ...prev].slice(0, 8));
     setLiveResults((prev) => [item, ...prev].slice(0, LIVE_RESULTS_COUNT));
 
-    setTimeout(() => {
-      setPointerWobble(false);
-      setPostSpinWobble(false);
-    }, 700);
-
-    setTimeout(() => {
-      setHighlightPhase("none");
-      setHighlightIndex(null);
-      setLastResult(null);
-    }, WHEEL_RESULT_CLEAR_MS);
+    void (async () => {
+      if (won) {
+        await persistBalance(balanceAfterBet + payout);
+        if (user) {
+          await saveScore("wheel", multiplier, bet, payout);
+        }
+      } else if (user) {
+        await saveScore("wheel", 0, bet, 0);
+      }
+    })();
   }, [persistBalance, user]);
 
   const forceResetSpin = useCallback(() => {
@@ -236,11 +242,11 @@ export function WheelGame() {
     }
     spinSafetyTimeoutRef.current = setTimeout(() => {
       if (pendingSpinRef.current) {
-        void finishSpin();
+        finishSpin();
       } else {
         forceResetSpin();
       }
-    }, (WHEEL_SPIN_DURATION_S + 1.5) * 1000);
+    }, (WHEEL_SPIN_DURATION_S + 0.35) * 1000);
   }
 
   const cooldownSeconds = Math.ceil(cooldownMs / 1000);
@@ -443,7 +449,7 @@ export function WheelGame() {
               highlightIndex={highlightIndex}
               highlightPhase={highlightPhase}
               pointerWobble={pointerWobble}
-              onSpinComplete={() => void finishSpin()}
+              onSpinComplete={finishSpin}
             />
           </div>
 

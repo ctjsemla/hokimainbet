@@ -81,12 +81,19 @@ export function WheelSvg({
   const fontSize = labelFontSize(multipliers.length);
   const labelR = R * 0.68;
   const spinCompleteFiredRef = useRef(false);
+  const isSpinningRef = useRef(isSpinning);
+  const onSpinCompleteRef = useRef(onSpinComplete);
 
   useEffect(() => {
+    isSpinningRef.current = isSpinning;
     if (isSpinning) {
       spinCompleteFiredRef.current = false;
     }
   }, [isSpinning]);
+
+  useEffect(() => {
+    onSpinCompleteRef.current = onSpinComplete;
+  }, [onSpinComplete]);
 
   const segments = useMemo(
     () =>
@@ -173,11 +180,11 @@ export function WheelSvg({
                 : { duration: 0 }
           }
           onAnimationComplete={() => {
-            if (!isSpinning || spinCompleteFiredRef.current || postSpinWobble) {
+            if (!isSpinningRef.current || spinCompleteFiredRef.current) {
               return;
             }
             spinCompleteFiredRef.current = true;
-            onSpinComplete?.();
+            onSpinCompleteRef.current?.();
           }}
         >
           {segments.map((seg) => {
