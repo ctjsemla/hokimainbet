@@ -58,6 +58,11 @@ function wheelSegmentLabel(
   return prize.label.toUpperCase();
 }
 
+function pickGuestWheelPrize(): (typeof WHEEL_PRIZES)[number] {
+  const source = WHEEL_PRIZES.filter((prize) => prize.type === "coins");
+  return source[Math.floor(Math.random() * source.length)];
+}
+
 function createFakeWinners(t: ReturnType<typeof useTranslations<"bonus.rewards">>): WinnerRow[] {
   const names = ["emiliano9", "frankthetank", "valismon729", "raepenor", "ylermi"];
   const prizes = [
@@ -262,15 +267,18 @@ export function RewardCenterSection() {
   }
 
   async function handleSpin() {
-    if (!user) {
-      setError(t("loginRequired"));
-      return;
-    }
     if (spinning) return;
     setSpinning(true);
+    setError(null);
     setWheelMessage(null);
     try {
-      const outcome = await spinRewardWheel(user.id);
+      const guestPrize = !user ? pickGuestWheelPrize() : null;
+      const outcome = user
+        ? await spinRewardWheel(user.id)
+        : {
+            prize: guestPrize!,
+            balance: null,
+          };
       const idx = WHEEL_PRIZES.findIndex((row) => row.id === outcome.prize.id);
       setResultIndex(idx >= 0 ? idx : 0);
       setWheelMessage(
@@ -278,7 +286,7 @@ export function RewardCenterSection() {
           ? t("wheelWinCoins", { amount: outcome.prize.amount })
           : t("wheelWinItem", { item: outcome.prize.label }),
       );
-      if (typeof outcome.balance === "number") {
+      if (user && typeof outcome.balance === "number") {
         setDemoBalance(outcome.balance);
         await refreshBalance();
       }
@@ -291,11 +299,13 @@ export function RewardCenterSection() {
               ? `${outcome.prize.amount.toLocaleString()} Coins`
               : outcome.prize.label,
           openedAt: new Date().toLocaleString(),
-          username: maskWinnerName(
-            (user.user_metadata?.username as string | undefined) ??
-              user.email ??
-              "e9",
-          ),
+          username: user
+            ? maskWinnerName(
+                (user.user_metadata?.username as string | undefined) ??
+                  user.email ??
+                  "e9",
+              )
+            : maskWinnerName("guest99"),
         };
         return [row, ...prev].slice(0, 8);
       });

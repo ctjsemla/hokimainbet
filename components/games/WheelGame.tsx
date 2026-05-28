@@ -17,7 +17,6 @@ import {
 import { useAuth } from "@/components/providers/AuthProvider";
 import { AnimatedNumber } from "@/components/ui/AnimatedNumber";
 import { DemoBalanceAlerts } from "@/components/ui/DemoBalanceAlerts";
-import { useLoginRequiredAction } from "@/hooks/useLoginRequiredAction";
 import { usePersistDemoBalance } from "@/hooks/usePersistDemoBalance";
 import { saveScore } from "@/lib/scores";
 import {
@@ -47,7 +46,6 @@ const LIVE_RESULTS_COUNT = 5;
 export function WheelGame() {
   const t = useTranslations("wheel");
   const { user } = useAuth();
-  const { requireLogin } = useLoginRequiredAction();
   const { balance, persistBalance } = usePersistDemoBalance();
 
   const [risk, setRisk] = useState<WheelRisk>("medium");
@@ -193,7 +191,6 @@ export function WheelGame() {
 
   async function handleSpin() {
     if (isLocked) return;
-    if (!requireLogin(Boolean(user), setBetError)) return;
 
     if (betAmount < MIN_BET) {
       setBetError(t("minBet"));

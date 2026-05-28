@@ -12,7 +12,6 @@ import {
 import { useAuth } from "@/components/providers/AuthProvider";
 import { AnimatedNumber } from "@/components/ui/AnimatedNumber";
 import { DemoBalanceAlerts } from "@/components/ui/DemoBalanceAlerts";
-import { useLoginRequiredAction } from "@/hooks/useLoginRequiredAction";
 import { usePersistDemoBalance } from "@/hooks/usePersistDemoBalance";
 import {
   countKenoMatches,
@@ -55,7 +54,6 @@ interface CellVisual {
 export function KenoGame() {
   const t = useTranslations("keno");
   const { user } = useAuth();
-  const { requireLogin } = useLoginRequiredAction();
   const { balance, persistBalance } = usePersistDemoBalance();
 
   const [phase, setPhase] = useState<KenoPhase>("picking");
@@ -173,7 +171,6 @@ export function KenoGame() {
 
   async function handleStart() {
     if (phase !== "picking") return;
-    if (!requireLogin(Boolean(user), setBetError)) return;
 
     if (pickCount < KENO_MIN_PICKS) return;
 

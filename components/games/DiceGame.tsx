@@ -8,7 +8,6 @@ import { GamePageShell } from "@/components/games/GamePageShell";
 import { useAuth } from "@/components/providers/AuthProvider";
 import { AnimatedNumber } from "@/components/ui/AnimatedNumber";
 import { DemoBalanceAlerts } from "@/components/ui/DemoBalanceAlerts";
-import { useLoginRequiredAction } from "@/hooks/useLoginRequiredAction";
 import { usePersistDemoBalance } from "@/hooks/usePersistDemoBalance";
 import {
   checkDiceWin,
@@ -35,9 +34,7 @@ const RESULT_PAUSE_MS = 2000;
 
 export function DiceGame() {
   const t = useTranslations("dice");
-  const tCommon = useTranslations("common");
   const { user } = useAuth();
-  const { requireLogin, goToLogin, loginRequiredMessage } = useLoginRequiredAction();
   const { balance, persistBalance } = usePersistDemoBalance();
 
   const [gameState, setGameState] = useState<GameState>("idle");
@@ -72,7 +69,6 @@ export function DiceGame() {
 
   async function handleRoll() {
     if (isPlaying) return;
-    if (!requireLogin(Boolean(user), setBetError)) return;
 
     if (betAmount < MIN_BET) {
       setBetError(t("minBet"));
@@ -404,15 +400,6 @@ export function DiceGame() {
               {betError && (
                 <div className="text-right">
                   <p className="text-sm text-orange-400">{betError}</p>
-                  {betError === loginRequiredMessage && (
-                    <button
-                      type="button"
-                      onClick={goToLogin}
-                      className="mt-1 text-xs text-orange-300 underline underline-offset-2"
-                    >
-                      {tCommon("goLogin")}
-                    </button>
-                  )}
                 </div>
               )}
               <m.button
