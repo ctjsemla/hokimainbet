@@ -11,6 +11,15 @@ const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: [],
   },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/id",
+        permanent: false,
+      },
+    ];
+  },
   images: {
     domains: [],
     unoptimized: false,
