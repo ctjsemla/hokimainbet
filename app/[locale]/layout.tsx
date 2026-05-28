@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, unstable_setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
@@ -36,6 +36,8 @@ export default async function LocaleLayout({
   if (!routing.locales.includes(locale as "id" | "en")) {
     notFound();
   }
+
+  unstable_setRequestLocale(locale);
 
   const messages = await getMessages();
 
