@@ -1,0 +1,23 @@
+---
+description: HokiMainbet demo games, affiliate CTA, and Supabase patterns
+globs: "**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# HokiMainbet — Oyunlar & Supabase
+
+## Oyun bileşenleri
+
+- Demo mod — gerçek para yok, sanal bakiye
+- Her oyun sayfasında sağ üst: **Main dengan Uang Asli →** CTA
+- CTA href: `https://stake.com/?c=AFFILIATE_CODE` (placeholder)
+- Skor oturum sonunda `game_scores` tablosuna kayıt
+- Sadece giriş yapmış kullanıcılar oynayabilir
+
+## Supabase
+
+- Client: `lib/supabase.ts`
+- Auth: email + password (Supabase Auth)
+- Tablolar: `game_scores`, `email_subscribers`
+- RLS aktif
+- Leaderboard: Realtime subscription

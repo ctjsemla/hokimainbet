@@ -1,0 +1,511 @@
+{
+  "home": {
+    "badge": "🎮 DEMO GRATIS • TANPA DEPOSIT",
+    "heroLine1": "RASAKAN",
+    "heroLine2": "SENSASI",
+    "heroLine3": "MENANG",
+    "heroSubtext": "Mainkan Crash, Dice, Mines & Plinko secara gratis. Kuasai strategimu sebelum main dengan uang asli.",
+    "ctaPrimary": "MULAI DEMO GRATIS",
+    "ctaSecondary": "Main Uang Asli →",
+    "trustNoDeposit": "Tanpa deposit",
+    "trustProvablyFair": "Provably Fair",
+    "trustFreeCoins": "1000 koin gratis",
+    "tickerHot": "🔥 Terpanas hari ini: CrashGame — 14.2x",
+    "tickerPlayers": "👥 247 pemain aktif sekarang",
+    "tickerWinnings": "💰 Total kemenangan hari ini: 48,230 koin",
+    "featuredSlider": {
+      "heading": "GAME UNGGULAN",
+      "subtitle": "Temukan permainan terpopuler minggu ini",
+      "prev": "Slide sebelumnya",
+      "next": "Slide berikutnya",
+      "dotLabel": "Ke slide {n}",
+      "slides": {
+        "wanted": {
+          "badge": "HACKSAW GAMING",
+          "title": "THE WANTED",
+          "tagline": "Dead or a Wild",
+          "rtp": "96.38% RTP",
+          "volatility": "⚡ HIGH",
+          "maxWin": "x12,500",
+          "cta": "MAIN UANG ASLI →"
+        },
+        "crash": {
+          "badge": "HOKI ORIGINALS",
+          "title": "CRASH",
+          "tagline": "Naikkan multiplier, cash out sebelum terlambat",
+          "rtp": "99% RTP",
+          "volatility": "VARIABLE",
+          "maxWin": "∞x",
+          "cta": "MAIN DEMO GRATIS →"
+        },
+        "sweetBonanza": {
+          "badge": "PRAGMATIC PLAY",
+          "title": "SWEET BONANZA",
+          "tagline": "Tumbling reels dengan multiplier hingga 21,100x",
+          "rtp": "96.51%",
+          "volatility": "⚡⚡ VERY HIGH",
+          "maxWin": "x21,100",
+          "cta": "MAIN UANG ASLI →"
+        },
+        "gates": {
+          "badge": "PRAGMATIC PLAY",
+          "title": "GATES OF OLYMPUS",
+          "tagline": "Zeus memberkati dengan multiplier x15,000",
+          "rtp": "96.5%",
+          "volatility": "⚡⚡ VERY HIGH",
+          "maxWin": "x15,000",
+          "cta": "MAIN UANG ASLI →"
+        },
+        "plinko": {
+          "badge": "HOKI ORIGINALS",
+          "title": "PLINKO",
+          "tagline": "Jatuhkan bola, raih jackpot hingga 1000x",
+          "rtp": "99%",
+          "volatility": "VARIABLE",
+          "maxWin": "x1,000",
+          "cta": "MAIN DEMO GRATIS →"
+        }
+      }
+    },
+    "gamesHeading": "PILIH PERMAINANMU",
+    "gamesSubtitle": "6 permainan demo gratis — kuasai strategi sebelum main asli",
+    "playDemo": "MAINKAN DEMO",
+    "games": {
+      "crash": "Crash",
+      "dice": "Dice",
+      "mines": "Mines",
+      "plinko": "Plinko",
+      "wheel": "Wheel",
+      "keno": "Keno"
+    },
+    "gamesDesc": {
+      "crash": "Naikkan multiplier, cash out sebelum crash — ketegangan real-time.",
+      "dice": "Roll under atau over — kontrol probabilitas dan payout.",
+      "mines": "Buka petak aman, hindari ranjau, cash out kapan saja.",
+      "plinko": "Jatuhkan bola, pilih risiko, menangkan multiplier slot.",
+      "wheel": "Putar roda, pilih risiko & segmen — multiplier acak tiap putaran.",
+      "keno": "Pilih angka 1–40, 10 undian — bayaran naik dengan jumlah cocok."
+    },
+    "howHeading": "CARA KERJA",
+    "steps": {
+      "01": {
+        "title": "Daftar Gratis",
+        "desc": "Buat akun dalam 30 detik dan dapatkan saldo demo."
+      },
+      "02": {
+        "title": "Main Demo",
+        "desc": "Kuasai strategi tanpa risiko di semua game."
+      },
+      "03": {
+        "title": "Main Uang Asli",
+        "desc": "Gunakan strategi nyata dan menangkan uang asli."
+      }
+    },
+    "blogHeading": "Baca Strategi Terbaru",
+    "blogViewAll": "Lihat semua artikel",
+    "ctaBannerTitle": "SIAP MAIN DENGAN UANG ASLI?",
+    "ctaBannerSub": "Buka akun sekarang dan klaim bonus 200%",
+    "ctaBannerButton": "MULAI MAIN ASLI →"
+  },
+  "games": {
+    "liveFeed": "HASIL LIVE"
+  },
+  "common": {
+    "comingSoon": "Segera Hadir",
+    "soundOn": "Aktifkan suara",
+    "soundOff": "Matikan suara"
+  },
+  "sidebar": {
+    "tagline": "Demo • Strategy • Win",
+    "provablyFair": "Provably Fair",
+    "activePlayers": "{count} pemain aktif",
+    "home": "Beranda",
+    "games": "Permainan",
+    "crash": "Crash",
+    "dice": "Dice",
+    "mines": "Mines",
+    "plinko": "Plinko",
+    "wheel": "Wheel",
+    "keno": "Keno",
+    "slotGames": "Permainan Slot",
+    "slotGamesCount": "15",
+    "blog": "Blog",
+    "leaderboard": "Papan Peringkat",
+    "bonus": "Arena Promo",
+    "login": "Masuk",
+    "register": "Daftar",
+    "logout": "Keluar",
+    "demoCoins": "💰 {amount} koin"
+  },
+  "balance": {
+    "lowBalance": "Saldo hampir habis",
+    "resetDemo": "Reset Saldo Demo",
+    "resetting": "Mereset…"
+  },
+  "language": {
+    "id": "ID",
+    "en": "EN"
+  },
+  "auth": {
+    "branding": {
+      "tagline": "Demo • Strategy • Win",
+      "trust": {
+        "coins": {
+          "title": "1000 koin demo gratis",
+          "sub": "Langsung main tanpa kartu kredit"
+        },
+        "fair": {
+          "title": "Provably Fair — transparan 100%",
+          "sub": "Setiap putaran bisa diverifikasi"
+        },
+        "noDeposit": {
+          "title": "Tanpa deposit, tanpa risiko",
+          "sub": "Mode demo murni untuk latihan"
+        }
+      }
+    },
+    "register": {
+      "heroTitle": "DAFTAR SEKARANG",
+      "subtitle": "Buat akun gratis dalam 30 detik",
+      "bonusLabel": "KOIN GRATIS",
+      "username": "Username",
+      "usernamePlaceholder": "pilih_username",
+      "usernameHint": "@username — huruf, angka, underscore, 3–20 karakter",
+      "email": "Email",
+      "emailPlaceholder": "nama@email.com",
+      "password": "Kata Sandi",
+      "passwordPlaceholder": "Min. 8 karakter",
+      "ageConfirm": "Saya berusia 18 tahun ke atas",
+      "newsletter": "Kirim info bonus & promo ke email saya",
+      "submit": "DAFTAR",
+      "submitting": "Mendaftar...",
+      "hasAccount": "Sudah punya akun?",
+      "loginLink": "Masuk",
+      "errors": {
+        "usernameRequired": "Username wajib diisi",
+        "usernameFormat": "3–20 karakter, huruf, angka, underscore saja",
+        "emailRequired": "Email wajib diisi",
+        "emailFormat": "Format email tidak valid",
+        "passwordRequired": "Kata sandi wajib diisi",
+        "passwordLength": "Kata sandi minimal 8 karakter",
+        "ageRequired": "Anda harus berusia 18 tahun ke atas",
+        "generic": "Pendaftaran gagal. Coba lagi."
+      }
+    },
+    "login": {
+      "heroTitle": "SELAMAT DATANG",
+      "subtitle": "Masuk ke akunmu",
+      "terms": "Dengan masuk, kamu setuju dengan Syarat & Ketentuan",
+      "email": "Email",
+      "emailPlaceholder": "nama@email.com",
+      "password": "Kata Sandi",
+      "passwordPlaceholder": "Kata sandi Anda",
+      "submit": "MASUK",
+      "submitting": "Masuk...",
+      "noAccount": "Belum punya akun?",
+      "registerLink": "Daftar",
+      "errors": {
+        "emailRequired": "Email wajib diisi",
+        "emailFormat": "Format email tidak valid",
+        "passwordRequired": "Kata sandi wajib diisi",
+        "generic": "Login gagal. Periksa email dan kata sandi."
+      }
+    }
+  },
+  "affiliate": {
+    "cta": "Main dengan Uang Asli →"
+  },
+  "slots": {
+    "title": "SLOT DEMO",
+    "subtitle": "Mainkan slot terpopuler dunia secara gratis — tanpa deposit",
+    "gamesAvailable": "15 Permainan Tersedia",
+    "filterAll": "Semua",
+    "filterPragmatic": "Pragmatic Play",
+    "filterHacksaw": "Hacksaw Gaming",
+    "rtp": "RTP",
+    "maxWin": "Max",
+    "playDemo": "MAINKAN DEMO",
+    "homeHeading": "SLOT POPULER",
+    "homeSubtitle": "Demo gratis dari provider terbaik dunia",
+    "viewAll": "Lihat Semua 15 Game →",
+    "loading": "Memuat game...",
+    "close": "Tutup",
+    "errorTitle": "⚠️ Game tidak tersedia",
+    "errorBody": "Demo tidak dapat dimuat di peramban ini. Main dengan uang asli untuk akses penuh."
+  },
+  "crash": {
+    "betAmount": "Jumlah Taruhan",
+    "balance": "Saldo",
+    "start": "MULAI",
+    "cashOut": "CASH OUT — {multiplier}x",
+    "crashed": "CRASHED!",
+    "cashedOut": "MENANG +{amount}",
+    "countdown": "{n}",
+    "half": "½",
+    "double": "2×",
+    "history": "Riwayat Anda",
+    "roundCrashed": "Jatuh",
+    "roundWon": "Menang",
+    "minBet": "Taruhan minimum 10",
+    "insufficientBalance": "Saldo tidak cukup",
+    "previousRounds": "Putaran sebelumnya",
+    "autoCashout": "Auto cashout",
+    "autoCashoutPlaceholder": "2.00"
+  },
+  "dice": {
+    "betAmount": "Jumlah Taruhan",
+    "balance": "Saldo",
+    "roll": "ROLL DICE",
+    "rolling": "Mengocok...",
+    "win": "MENANG",
+    "lose": "KALAH",
+    "rollUnder": "Roll Under",
+    "rollOver": "Roll Over",
+    "threshold": "Ambang",
+    "winChance": "Peluang menang",
+    "multiplier": "Pengganda",
+    "half": "½",
+    "double": "2×",
+    "minBet": "Taruhan minimum 10",
+    "insufficientBalance": "Saldo tidak cukup",
+    "rollHistory": "Riwayat roll",
+    "historyMultiplier": "{multiplier}x"
+  },
+  "mines": {
+    "betAmount": "Jumlah Taruhan",
+    "balance": "Saldo",
+    "mineCount": "Jumlah ranjau",
+    "minesLabel": "{count} ranjau",
+    "multiplier": "Pengganda",
+    "potentialWin": "Kemenangan potensial",
+    "start": "START GAME",
+    "cashOut": "CASH OUT — {multiplier}x",
+    "half": "½",
+    "double": "2×",
+    "minBet": "Taruhan minimum 10",
+    "insufficientBalance": "Saldo tidak cukup",
+    "preset": "Preset"
+  },
+  "plinko": {
+    "betAmount": "Jumlah Taruhan",
+    "balance": "Saldo",
+    "risk": "Tingkat risiko",
+    "risk_low": "Rendah",
+    "risk_medium": "Sedang",
+    "risk_high": "Tinggi",
+    "rows": "Baris",
+    "drop": "DROP BALL",
+    "half": "½",
+    "double": "2×",
+    "minBet": "Taruhan minimum 10",
+    "insufficientBalance": "Saldo tidak cukup",
+    "history": "Hasil terakhir",
+    "autoMode": "Mode otomatis",
+    "stopAuto": "Hentikan otomatis"
+  },
+  "wheel": {
+    "betAmount": "Jumlah Taruhan",
+    "balance": "Saldo",
+    "risk": "Tingkat risiko",
+    "risk_low": "Rendah",
+    "risk_medium": "Sedang",
+    "risk_high": "Tinggi",
+    "segments": "Segmen",
+    "spin": "PUTAR",
+    "spinning": "MEMUTAR...",
+    "cooldown": "SIAP {seconds}s...",
+    "half": "½",
+    "double": "2×",
+    "minBet": "Taruhan minimum 10",
+    "insufficientBalance": "Saldo tidak cukup",
+    "history": "Hasil terakhir",
+    "liveResults": "Hasil live",
+    "win": "MENANG! {multiplier}",
+    "lose": "COBA LAGI"
+  },
+  "keno": {
+    "betAmount": "Jumlah Taruhan",
+    "balance": "Saldo",
+    "selectedCount": "{count}/{max} dipilih",
+    "payoutTable": "Tabel bayaran",
+    "matchRow": "{count} cocok",
+    "start": "MULAI",
+    "pickMinimum": "Pilih minimal 1 angka",
+    "clear": "BERSIHKAN",
+    "half": "½",
+    "double": "2×",
+    "minBet": "Taruhan minimum 10",
+    "insufficientBalance": "Saldo tidak cukup",
+    "history": "Hasil terakhir",
+    "historyLine": "{matches}/{picks} cocok",
+    "drawing": "Menarik {current}/{total}...",
+    "winBanner": "MENANG {multiplier}!",
+    "loseBanner": "TIDAK ADA KEBERUNTUNGAN",
+    "matchSummary": "{matches} dari {total} cocok!"
+  },
+  "blog": {
+    "title": "Blog",
+    "eyebrow": "Strategi & panduan",
+    "metaTitle": "Blog Strategi Casino Crypto",
+    "metaDescription": "Panduan Crash, Dice, Provably Fair, dan tips casino crypto untuk pemain Indonesia.",
+    "search": "Cari",
+    "searchPlaceholder": "Cari artikel...",
+    "clearSearch": "Hapus pencarian",
+    "allCategories": "Semua",
+    "categories": {
+      "Strategy": "Strategi",
+      "Guide": "Panduan",
+      "Crypto": "Crypto",
+      "Sports": "Olahraga",
+      "News": "Berita"
+    },
+    "coverCategory": {
+      "Guide": "PANDUAN",
+      "Strategy": "STRATEGI",
+      "Crypto": "KRIPTO",
+      "Sports": "OLAHRAGA",
+      "News": "BERITA"
+    },
+    "noResults": "Tidak ada artikel yang cocok.",
+    "tableOfContents": "Daftar isi",
+    "relatedPosts": "Artikel terkait",
+    "share": "Bagikan",
+    "copyLink": "Salin tautan",
+    "readyToPlay": "Siap main dengan uang asli?",
+    "readyToPlayDesc": "Main dengan uang asli lewat link resmi HokiMainbet — deposit crypto cepat untuk pemain Indonesia.",
+    "published": "Diterbitkan"
+  },
+  "leaderboard": {
+    "title": "LEADERBOARD",
+    "subheadingToday": "Top Players Hari Ini",
+    "subheadingWeek": "Top Players Minggu Ini",
+    "subheadingAll": "Top Players Sepanjang Masa",
+    "statGamesToday": "Game hari ini",
+    "statHighest": "Multiplier tertinggi",
+    "statActive": "Pemain aktif",
+    "colPlayer": "Pemain",
+    "colMultiplier": "Multiplier",
+    "colBet": "Taruhan",
+    "colPayout": "P/L",
+    "colTime": "Waktu",
+    "yourBest": "TERBAIKMU",
+    "yourStats": "Statistik kamu",
+    "yourRank": "Peringkatmu",
+    "bestMultiplier": "Multiplier terbaik",
+    "bestPerGame": "Terbaik per game",
+    "totalGames": "Total game",
+    "totalPnL": "Total untung/rugi",
+    "improveScore": "Tingkatkan skormu",
+    "loginPrompt": "Masuk untuk melihat statistik pribadi dan peringkatmu.",
+    "loginCta": "Masuk",
+    "emptyTitle": "Belum ada permainan",
+    "emptyDesc": "Mainkan demo game dan jadilah yang pertama di papan peringkat.",
+    "loadError": "Gagal memuat leaderboard. Coba lagi.",
+    "notConfigured": "Supabase belum dikonfigurasi. Tambahkan kredensial di .env.local.",
+    "games": {
+      "all": "Semua Game",
+      "crash": "Crash",
+      "dice": "Dice",
+      "mines": "Mines",
+      "plinko": "Plinko",
+      "wheel": "Wheel",
+      "keno": "Keno"
+    },
+    "time": {
+      "today": "Hari Ini",
+      "week": "Minggu Ini",
+      "all": "Sepanjang Masa"
+    }
+  },
+  "bonus": {
+    "platform": {
+      "title": "PILIH PLATFORM",
+      "subtitle": "Pilih platform terbaik dan mulai main dengan uang asli",
+      "comparisonTitle": "PERBANDINGAN PLATFORM",
+      "tableFeature": "Fitur",
+      "yes": "Ya",
+      "cryptoInstant": "Crypto instan",
+      "bcTagline": "Crypto Casino #1 di Asia",
+      "rollbitTagline": "Crypto Casino & Esports Betting",
+      "bcBonusValue": "280%",
+      "bcBonusTitle": "Bonus Deposit Pertama",
+      "bcBonusSub": "Hingga Rp 66.734.724",
+      "rollbitBonusValue": "15%",
+      "rollbitBonusTitle": "Rakeback 24 Jam Pertama",
+      "rollbitBonusSub": "Semua Taruhan Dikembalikan",
+      "bcFeatures": {
+        "games": "10,000+ permainan",
+        "providers": "Pragmatic Play & Evolution",
+        "withdrawal": "Withdrawal crypto instan",
+        "indonesian": "Support Bahasa Indonesia",
+        "deposit": "Deposit minimal $10"
+      },
+      "rollbitFeatures": {
+        "slots": "10,000+ permainan slots",
+        "crash": "Crash & provably fair games",
+        "esports": "Esports betting",
+        "calendar": "Reward calendar harian",
+        "privacy": "Crypto only — privasi terjaga"
+      },
+      "bcCta": "DAFTAR DI BC.GAME →",
+      "rollbitCta": "DAFTAR DI ROLLBIT →",
+      "bcLicense": "Berlisensi Curacao • Sejak 2017",
+      "rollbitLicense": "Berlisensi • Crypto Native",
+      "bottomTitle": "TIDAK YAKIN HARUS PILIH YANG MANA?",
+      "bottomSub": "Coba keduanya — daftar gratis di kedua platform dan bandingkan sendiri",
+      "bottomBc": "BC.GAME →",
+      "bottomRollbit": "ROLLBIT →",
+      "rows": {
+        "welcomeBonus": "Bonus Selamat Datang",
+        "gameCount": "Jumlah Game",
+        "crash": "Crash Game",
+        "slots": "Slot (Pragmatic)",
+        "liveCasino": "Live Casino",
+        "esports": "Esports Betting",
+        "indonesian": "Bahasa Indonesia",
+        "minDeposit": "Deposit Minimal",
+        "withdrawal": "Withdrawal"
+      }
+    },
+    "title": "ARENA PROMO",
+    "subtitle": "Fitur eksklusif & penawaran terbaik HokiMainbet",
+    "updatedBadge": "SELALU DIPERBARUI",
+    "countdown": {
+      "days": "Hari",
+      "hours": "Jam",
+      "minutes": "Menit",
+      "seconds": "Detik"
+    },
+    "badges": {
+      "newPlayer": "NEW PLAYER",
+      "transparency": "TRANSPARANSI 100%",
+      "weekly": "WEEKLY",
+      "free": "GRATIS",
+      "tips": "TIPS & TRIK"
+    },
+    "welcome": {
+      "title": "MULAI DENGAN 1.000 KOIN GRATIS",
+      "subtext": "Daftar sekarang, langsung main tanpa deposit",
+      "cta": "DAFTAR GRATIS →"
+    },
+    "provablyFair": {
+      "title": "SETIAP PUTARAN BISA DIVERIFIKASI",
+      "desc": "Setiap hasil permainan di HokiMainbet dihasilkan dari kombinasi client seed, server seed, dan nonce — kamu bisa memverifikasi sendiri setelah putaran selesai. Tidak ada manipulasi tersembunyi; transparansi penuh untuk setiap demo game."
+    },
+    "leaderboard": {
+      "title": "TANTANGAN MINGGUAN",
+      "subtext": "Jadilah #1 minggu ini",
+      "timerLabel": "Reset leaderboard",
+      "cta": "LIHAT LEADERBOARD →"
+    },
+    "games": {
+      "title": "6 PERMAINAN DEMO TERSEDIA",
+      "cta": "MAINKAN SEMUA →"
+    },
+    "blog": {
+      "title": "PELAJARI STRATEGI DARI PARA AHLI",
+      "cta": "BACA STRATEGI →",
+      "empty": "Artikel strategi segera hadir."
+    }
+  }
+}

@@ -1,0 +1,52 @@
+---
+description: HokiMainbet design system — editorial UI, navy/orange palette, layout, motion
+alwaysApply: true
+---
+
+# HokiMainbet — Tasarım
+
+## Felsefe
+
+- AI-generic görünümden kaçın: mor gradyanlar, glassmorphism yığını, blob şekiller, emoji ikonlu 3'lü grid yok
+- Editorial, insan eli değmiş his: asimetrik layoutlar, büyük bold tipografi, cesur whitespace
+- Her section farklı görünmeli; tekrar eden kart şablonları yok
+- Casino/gaming ama premium — ucuz görünmesin
+- Tek güçlü vizyon seç ve kararlılıkla uygula
+
+## Renk (sadece bunlar)
+
+| Kullanım | Hex | Tailwind |
+|----------|-----|----------|
+| Ana arka plan | #060d1f | bg-navy-950 |
+| Sidebar/panel | #0a1628 | bg-navy-900 |
+| Kart/yüzey | #0f2040 | bg-navy-800 |
+| Hover | #1a3360 | bg-navy-700 |
+| Ana aksan (CTA, aktif link) | #f97316 | orange-500 |
+| Vurgu (highlight, badge) | #fb923c | orange-400 |
+| Metin birincil | #ffffff | — |
+| Metin ikincil | #94a3b8 | — |
+
+Başka renk kullanma.
+
+## Tipografi
+
+- Inter, Roboto, Arial, system-ui yok
+- Display: karakterli font (örn. Bebas Neue, DM Serif Display) — Space Grotesk değil
+- Body: okunabilir, kişilikli (örn. DM Sans, Plus Jakarta Sans)
+- Hero başlıkları 80px+ normal; font pair tüm projede tutarlı
+
+## Layout
+
+- Sol sidebar sabit: 240px, bg-navy-900
+- Ana içerik: bg-navy-950, sidebar yanında
+- Asimetrik düzenler; sayfa başına farklı grid olabilir
+- Negatif boşluk cesurca; section'lar arası yüksek kontrast
+- Mobilde sidebar → hamburger
+
+## Animasyon (Framer Motion)
+
+- Sayfa yüklenince staggered reveal
+- CTA: scale + orange glow hover
+- Oyunlarda physics-based animasyon
+- Blog/content: scroll-trigger reveal
+- Gereksiz animasyon yok — her animasyonun amacı olsun

@@ -1,0 +1,31 @@
+---
+description: HokiMainbet stack, TypeScript conventions, and file naming
+alwaysApply: true
+---
+
+# HokiMainbet — Stack & Kod
+
+## Stack
+
+- Next.js 14 App Router + TypeScript
+- Tailwind CSS (custom: navy + orange palette)
+- Framer Motion (geçişler, reveal, mikro-interaksiyonlar)
+- Lucide React (stroke-based ikonlar)
+- Supabase (auth + DB)
+- next-intl (id / en)
+
+## Kod kalitesi
+
+- Tek sorumluluk per component
+- TypeScript eksiksiz — `any` yok
+- Aşırı yorum yok; kod kendini açıklamalı
+- Props interface dosya başında
+- Supabase query'leri `lib/` altında ayrı fonksiyonlar
+- Her component'te loading ve error state
+
+## Dosya adlandırma
+
+- Componentler: PascalCase (`Sidebar.tsx`, `CrashGame.tsx`)
+- Utility: camelCase (`formatCurrency.ts`)
+- Sayfalar: Next.js convention (`page.tsx`, `layout.tsx`)
+- Tipler: `types.ts` veya `*.types.ts`

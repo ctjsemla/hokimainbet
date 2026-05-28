@@ -1,0 +1,71 @@
+---
+title: "Apa itu Provably Fair?"
+description: "Penjelasan lengkap Provably Fair di casino crypto — cara kerja server seed, client seed, dan verifikasi hasil di Stake."
+category: "Crypto"
+date: "2026-01-05"
+author: "HokiMainbet Team"
+readTime: "7 min"
+tags:
+  - provably fair
+  - stake
+  - crypto casino
+  - transparansi
+  - verifikasi hasil
+---
+
+**Provably Fair** adalah sistem kriptografi yang memungkinkan pemain **memverifikasi sendiri** bahwa hasil permainan tidak dimanipulasi setelah taruhan ditutup. Ini menjadi standar di Stake dan platform crypto casino terkemuka.
+
+## Mengapa Provably Fair Penting?
+
+Di casino tradisional, Anda percaya pada lisensi dan audit pihak ketiga. Di **crypto casino**, Provably Fair menambah lapisan transparansi: setiap ronde bisa diaudit dengan rumus yang dipublikasikan.
+
+> Tanpa Provably Fair, Anda hanya melihat animasi. Dengan Provably Fair, Anda bisa mengecek matematika di balik animasi itu.
+
+## Komponen Utama
+
+### Server Seed (hash)
+
+Sebelum bermain, server mengumumkan **hash** dari server seed. Seed asli disembunyikan sampai rotasi — mencegah server menyesuaikan hasil setelah melihat taruhan Anda.
+
+### Client Seed
+
+Anda bisa mengatur client seed sendiri (atau random). Kombinasi server + client seed menentukan hasil lewat fungsi hash (biasanya SHA-256 atau HMAC).
+
+### Nonce
+
+Nomor urut per taruhan/ronde. Setiap taruhan menambah nonce agar hasil unik meski seed sama.
+
+## Alur Verifikasi Sederhana
+
+1. Catat **server seed hash** sebelum taruhan.
+2. Main dan dapat hasil (misalnya multiplier Crash atau angka Dice).
+3. Setelah server seed dibuka, masukkan seed + client seed + nonce ke **kalkulator verifikasi** Stake.
+4. Bandingkan hasil kalkulator dengan hasil di layar — harus cocok.
+
+## Contoh di Berbagai Game
+
+### Crash
+
+Multiplier crash dihitung dari seed pair. Grafik hanya visualisasi angka yang sudah ditentukan.
+
+### Dice
+
+Angka roll (0–100) berasal dari hash yang sama. Threshold menang/kalah hanya aturan UI di atas angka itu.
+
+### Mines & Plinko
+
+Pola ranjau atau jalur bola dapat direkonstruksi dari seed — asalkan platform mempublikasikan algoritma.
+
+## Apakah Demo HokiMainbet Provably Fair?
+
+Mode **demo** kami untuk latihan strategi menggunakan RNG lokal untuk pengalaman bermain — **bukan** replika infrastruktur Provably Fair Stake. Untuk verifikasi kriptografis penuh, gunakan Stake dengan uang asli/crypto.
+
+## Tips Keamanan
+
+- Rotasi server seed secara berkala.
+- Jangan share client seed dengan “tipster” yang menjanjikan pola.
+- Simpan riwayat seed jika Anda audit taruhan besar.
+
+## Kesimpulan
+
+Provably Fair mengubah kepercayaan menjadi **bukti matematis**. Pahami server seed, client seed, dan nonce — lalu verifikasi beberapa taruhan pertama Anda di Stake. Itu kebiasaan terbaik untuk pemain crypto casino Indonesia yang serius.

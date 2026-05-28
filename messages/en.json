@@ -1,0 +1,511 @@
+{
+  "home": {
+    "badge": "🎮 FREE DEMO • NO DEPOSIT",
+    "heroLine1": "FEEL THE",
+    "heroLine2": "THRILL OF",
+    "heroLine3": "WINNING",
+    "heroSubtext": "Play Crash, Dice, Mines & Plinko for free. Master your strategy before playing for real money.",
+    "ctaPrimary": "START FREE DEMO",
+    "ctaSecondary": "Play Real Money →",
+    "trustNoDeposit": "No deposit",
+    "trustProvablyFair": "Provably Fair",
+    "trustFreeCoins": "1000 free coins",
+    "tickerHot": "🔥 Hottest today: CrashGame — 14.2x",
+    "tickerPlayers": "👥 247 players active now",
+    "tickerWinnings": "💰 Total wins today: 48,230 coins",
+    "featuredSlider": {
+      "heading": "FEATURED GAMES",
+      "subtitle": "Discover this week's most popular games",
+      "prev": "Previous slide",
+      "next": "Next slide",
+      "dotLabel": "Go to slide {n}",
+      "slides": {
+        "wanted": {
+          "badge": "HACKSAW GAMING",
+          "title": "THE WANTED",
+          "tagline": "Dead or a Wild",
+          "rtp": "96.38% RTP",
+          "volatility": "⚡ HIGH",
+          "maxWin": "x12,500",
+          "cta": "PLAY REAL MONEY →"
+        },
+        "crash": {
+          "badge": "HOKI ORIGINALS",
+          "title": "CRASH",
+          "tagline": "Ride the multiplier — cash out before it's too late",
+          "rtp": "99% RTP",
+          "volatility": "VARIABLE",
+          "maxWin": "∞x",
+          "cta": "PLAY FREE DEMO →"
+        },
+        "sweetBonanza": {
+          "badge": "PRAGMATIC PLAY",
+          "title": "SWEET BONANZA",
+          "tagline": "Tumbling reels with multipliers up to 21,100x",
+          "rtp": "96.51%",
+          "volatility": "⚡⚡ VERY HIGH",
+          "maxWin": "x21,100",
+          "cta": "PLAY REAL MONEY →"
+        },
+        "gates": {
+          "badge": "PRAGMATIC PLAY",
+          "title": "GATES OF OLYMPUS",
+          "tagline": "Zeus blesses with multipliers up to x15,000",
+          "rtp": "96.5%",
+          "volatility": "⚡⚡ VERY HIGH",
+          "maxWin": "x15,000",
+          "cta": "PLAY REAL MONEY →"
+        },
+        "plinko": {
+          "badge": "HOKI ORIGINALS",
+          "title": "PLINKO",
+          "tagline": "Drop the ball, chase jackpots up to 1000x",
+          "rtp": "99%",
+          "volatility": "VARIABLE",
+          "maxWin": "x1,000",
+          "cta": "PLAY FREE DEMO →"
+        }
+      }
+    },
+    "gamesHeading": "PICK YOUR GAME",
+    "gamesSubtitle": "6 free demo games — master your strategy before playing for real",
+    "playDemo": "PLAY DEMO",
+    "games": {
+      "crash": "Crash",
+      "dice": "Dice",
+      "mines": "Mines",
+      "plinko": "Plinko",
+      "wheel": "Wheel",
+      "keno": "Keno"
+    },
+    "gamesDesc": {
+      "crash": "Ride the multiplier, cash out before the crash.",
+      "dice": "Roll under or over — control odds and payout.",
+      "mines": "Reveal safe tiles, avoid mines, cash out anytime.",
+      "plinko": "Drop the ball, pick your risk, hit the slots.",
+      "wheel": "Spin the wheel, pick risk & segments — random multiplier each round.",
+      "keno": "Pick numbers 1–40, 10 draws — payout grows with matches."
+    },
+    "howHeading": "HOW IT WORKS",
+    "steps": {
+      "01": {
+        "title": "Sign Up Free",
+        "desc": "Create an account in 30 seconds and get demo balance."
+      },
+      "02": {
+        "title": "Play Demo",
+        "desc": "Master strategies risk-free across all games."
+      },
+      "03": {
+        "title": "Play for Real Money",
+        "desc": "Use real strategies and win real money."
+      }
+    },
+    "blogHeading": "Latest Strategy Guides",
+    "blogViewAll": "View all articles",
+    "ctaBannerTitle": "READY TO PLAY FOR REAL?",
+    "ctaBannerSub": "Open your account now and claim your 200% bonus",
+    "ctaBannerButton": "PLAY FOR REAL MONEY →"
+  },
+  "games": {
+    "liveFeed": "LIVE RESULTS"
+  },
+  "common": {
+    "comingSoon": "Coming Soon",
+    "soundOn": "Enable sound",
+    "soundOff": "Mute sound"
+  },
+  "sidebar": {
+    "tagline": "Demo • Strategy • Win",
+    "provablyFair": "Provably Fair",
+    "activePlayers": "{count} players active",
+    "home": "Home",
+    "games": "Games",
+    "crash": "Crash",
+    "dice": "Dice",
+    "mines": "Mines",
+    "plinko": "Plinko",
+    "wheel": "Wheel",
+    "keno": "Keno",
+    "slotGames": "Slot Games",
+    "slotGamesCount": "15",
+    "blog": "Blog",
+    "leaderboard": "Leaderboard",
+    "bonus": "Arena Promo",
+    "login": "Sign In",
+    "register": "Sign Up",
+    "logout": "Sign Out",
+    "demoCoins": "💰 {amount} coins"
+  },
+  "balance": {
+    "lowBalance": "Balance almost empty",
+    "resetDemo": "Reset Demo Balance",
+    "resetting": "Resetting…"
+  },
+  "language": {
+    "id": "ID",
+    "en": "EN"
+  },
+  "auth": {
+    "branding": {
+      "tagline": "Demo • Strategy • Win",
+      "trust": {
+        "coins": {
+          "title": "1000 free demo coins",
+          "sub": "Play instantly — no credit card"
+        },
+        "fair": {
+          "title": "Provably Fair — 100% transparent",
+          "sub": "Every round is verifiable"
+        },
+        "noDeposit": {
+          "title": "No deposit, no risk",
+          "sub": "Pure demo mode for practice"
+        }
+      }
+    },
+    "register": {
+      "heroTitle": "REGISTER NOW",
+      "subtitle": "Create a free account in 30 seconds",
+      "bonusLabel": "FREE COINS",
+      "username": "Username",
+      "usernamePlaceholder": "choose_username",
+      "usernameHint": "@username — letters, numbers, underscore, 3–20 characters",
+      "email": "Email",
+      "emailPlaceholder": "name@email.com",
+      "password": "Password",
+      "passwordPlaceholder": "Min. 8 characters",
+      "ageConfirm": "I am 18 years or older",
+      "newsletter": "Send bonus & promo info to my email",
+      "submit": "REGISTER",
+      "submitting": "Registering...",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Sign in",
+      "errors": {
+        "usernameRequired": "Username is required",
+        "usernameFormat": "3–20 characters, letters, numbers, underscore only",
+        "emailRequired": "Email is required",
+        "emailFormat": "Invalid email format",
+        "passwordRequired": "Password is required",
+        "passwordLength": "Password must be at least 8 characters",
+        "ageRequired": "You must be 18 years or older",
+        "generic": "Registration failed. Please try again."
+      }
+    },
+    "login": {
+      "heroTitle": "WELCOME BACK",
+      "subtitle": "Sign in to your account",
+      "terms": "By signing in, you agree to the Terms & Conditions",
+      "email": "Email",
+      "emailPlaceholder": "name@email.com",
+      "password": "Password",
+      "passwordPlaceholder": "Your password",
+      "submit": "SIGN IN",
+      "submitting": "Signing in...",
+      "noAccount": "Don't have an account?",
+      "registerLink": "Register",
+      "errors": {
+        "emailRequired": "Email is required",
+        "emailFormat": "Invalid email format",
+        "passwordRequired": "Password is required",
+        "generic": "Sign in failed. Check your email and password."
+      }
+    }
+  },
+  "affiliate": {
+    "cta": "Play with Real Money →"
+  },
+  "slots": {
+    "title": "SLOT DEMO",
+    "subtitle": "Play the world's most popular slots for free — no deposit required",
+    "gamesAvailable": "15 Games Available",
+    "filterAll": "All",
+    "filterPragmatic": "Pragmatic Play",
+    "filterHacksaw": "Hacksaw Gaming",
+    "rtp": "RTP",
+    "maxWin": "Max",
+    "playDemo": "PLAY DEMO",
+    "homeHeading": "POPULAR SLOTS",
+    "homeSubtitle": "Free demos from the world's top providers",
+    "viewAll": "View All 15 Games →",
+    "loading": "Loading game...",
+    "close": "Close",
+    "errorTitle": "⚠️ Game unavailable",
+    "errorBody": "This demo could not load in your browser. Play with real money for full access."
+  },
+  "crash": {
+    "betAmount": "Bet Amount",
+    "balance": "Balance",
+    "start": "START",
+    "cashOut": "CASH OUT — {multiplier}x",
+    "crashed": "CRASHED!",
+    "cashedOut": "WON +{amount}",
+    "countdown": "{n}",
+    "half": "½",
+    "double": "2×",
+    "history": "Your History",
+    "roundCrashed": "Bust",
+    "roundWon": "Won",
+    "minBet": "Minimum bet is 10",
+    "insufficientBalance": "Insufficient balance",
+    "previousRounds": "Previous rounds",
+    "autoCashout": "Auto cashout",
+    "autoCashoutPlaceholder": "2.00"
+  },
+  "dice": {
+    "betAmount": "Bet Amount",
+    "balance": "Balance",
+    "roll": "ROLL DICE",
+    "rolling": "Rolling...",
+    "win": "WIN",
+    "lose": "LOSE",
+    "rollUnder": "Roll Under",
+    "rollOver": "Roll Over",
+    "threshold": "Threshold",
+    "winChance": "Win chance",
+    "multiplier": "Multiplier",
+    "half": "½",
+    "double": "2×",
+    "minBet": "Minimum bet is 10",
+    "insufficientBalance": "Insufficient balance",
+    "rollHistory": "Roll history",
+    "historyMultiplier": "{multiplier}x"
+  },
+  "mines": {
+    "betAmount": "Bet Amount",
+    "balance": "Balance",
+    "mineCount": "Mine count",
+    "minesLabel": "{count} mines",
+    "multiplier": "Multiplier",
+    "potentialWin": "Potential win",
+    "start": "START GAME",
+    "cashOut": "CASH OUT — {multiplier}x",
+    "half": "½",
+    "double": "2×",
+    "minBet": "Minimum bet is 10",
+    "insufficientBalance": "Insufficient balance",
+    "preset": "Preset"
+  },
+  "plinko": {
+    "betAmount": "Bet Amount",
+    "balance": "Balance",
+    "risk": "Risk level",
+    "risk_low": "Low",
+    "risk_medium": "Medium",
+    "risk_high": "High",
+    "rows": "Rows",
+    "drop": "DROP BALL",
+    "half": "½",
+    "double": "2×",
+    "minBet": "Minimum bet is 10",
+    "insufficientBalance": "Insufficient balance",
+    "history": "Last results",
+    "autoMode": "Auto mode",
+    "stopAuto": "Stop auto"
+  },
+  "wheel": {
+    "betAmount": "Bet Amount",
+    "balance": "Balance",
+    "risk": "Risk level",
+    "risk_low": "Low",
+    "risk_medium": "Medium",
+    "risk_high": "High",
+    "segments": "Segments",
+    "spin": "SPIN",
+    "spinning": "SPINNING...",
+    "cooldown": "READY {seconds}s...",
+    "half": "½",
+    "double": "2×",
+    "minBet": "Minimum bet is 10",
+    "insufficientBalance": "Insufficient balance",
+    "history": "Recent results",
+    "liveResults": "Live results",
+    "win": "YOU WIN! {multiplier}",
+    "lose": "TRY AGAIN"
+  },
+  "keno": {
+    "betAmount": "Bet Amount",
+    "balance": "Balance",
+    "selectedCount": "{count}/{max} selected",
+    "payoutTable": "Payout table",
+    "matchRow": "{count} matches",
+    "start": "START",
+    "pickMinimum": "Pick at least 1 number",
+    "clear": "CLEAR",
+    "half": "½",
+    "double": "2×",
+    "minBet": "Minimum bet is 10",
+    "insufficientBalance": "Insufficient balance",
+    "history": "Recent results",
+    "historyLine": "{matches}/{picks} matches",
+    "drawing": "Drawing {current}/{total}...",
+    "winBanner": "YOU WIN {multiplier}!",
+    "loseBanner": "NO LUCK THIS TIME",
+    "matchSummary": "{matches} of {total} matched!"
+  },
+  "blog": {
+    "title": "Blog",
+    "eyebrow": "Strategy & guides",
+    "metaTitle": "Crypto Casino Strategy Blog",
+    "metaDescription": "Crash, Dice, Provably Fair guides and crypto casino tips for Indonesian players.",
+    "search": "Search",
+    "searchPlaceholder": "Search articles...",
+    "clearSearch": "Clear search",
+    "allCategories": "All",
+    "categories": {
+      "Strategy": "Strategy",
+      "Guide": "Guide",
+      "Crypto": "Crypto",
+      "Sports": "Sports",
+      "News": "News"
+    },
+    "coverCategory": {
+      "Guide": "GUIDE",
+      "Strategy": "STRATEGY",
+      "Crypto": "CRYPTO",
+      "Sports": "SPORTS",
+      "News": "NEWS"
+    },
+    "noResults": "No matching articles.",
+    "tableOfContents": "Table of contents",
+    "relatedPosts": "Related posts",
+    "share": "Share",
+    "copyLink": "Copy link",
+    "readyToPlay": "Ready to play for real?",
+    "readyToPlayDesc": "Play for real money via the official HokiMainbet link — fast crypto deposits for Indonesian players.",
+    "published": "Published"
+  },
+  "leaderboard": {
+    "title": "LEADERBOARD",
+    "subheadingToday": "Top Players Today",
+    "subheadingWeek": "Top Players This Week",
+    "subheadingAll": "Top Players All Time",
+    "statGamesToday": "Games today",
+    "statHighest": "Highest multiplier",
+    "statActive": "Active now",
+    "colPlayer": "Player",
+    "colMultiplier": "Multiplier",
+    "colBet": "Bet",
+    "colPayout": "P/L",
+    "colTime": "Time",
+    "yourBest": "YOUR BEST",
+    "yourStats": "Your stats",
+    "yourRank": "Your rank",
+    "bestMultiplier": "Best multiplier",
+    "bestPerGame": "Best per game",
+    "totalGames": "Total games",
+    "totalPnL": "Total profit/loss",
+    "improveScore": "Improve your score",
+    "loginPrompt": "Sign in to see your personal stats and rank.",
+    "loginCta": "Sign In",
+    "emptyTitle": "No games played yet",
+    "emptyDesc": "Play the demo games and be the first on the leaderboard.",
+    "loadError": "Failed to load leaderboard. Please try again.",
+    "notConfigured": "Supabase is not configured. Add credentials to .env.local.",
+    "games": {
+      "all": "All Games",
+      "crash": "Crash",
+      "dice": "Dice",
+      "mines": "Mines",
+      "plinko": "Plinko",
+      "wheel": "Wheel",
+      "keno": "Keno"
+    },
+    "time": {
+      "today": "Today",
+      "week": "This Week",
+      "all": "All Time"
+    }
+  },
+  "bonus": {
+    "platform": {
+      "title": "CHOOSE PLATFORM",
+      "subtitle": "Pick the best platform and play with real money",
+      "comparisonTitle": "PLATFORM COMPARISON",
+      "tableFeature": "Feature",
+      "yes": "Yes",
+      "cryptoInstant": "Instant crypto",
+      "bcTagline": "Asia's #1 Crypto Casino",
+      "rollbitTagline": "Crypto Casino & Esports Betting",
+      "bcBonusValue": "280%",
+      "bcBonusTitle": "First Deposit Bonus",
+      "bcBonusSub": "Up to $4,000+ equivalent",
+      "rollbitBonusValue": "15%",
+      "rollbitBonusTitle": "First 24h Rakeback",
+      "rollbitBonusSub": "All bets returned",
+      "bcFeatures": {
+        "games": "10,000+ games",
+        "providers": "Pragmatic Play & Evolution",
+        "withdrawal": "Instant crypto withdrawals",
+        "indonesian": "Indonesian language support",
+        "deposit": "Minimum deposit ~$10"
+      },
+      "rollbitFeatures": {
+        "slots": "10,000+ slot games",
+        "crash": "Crash & provably fair games",
+        "esports": "Esports betting",
+        "calendar": "Daily reward calendar",
+        "privacy": "Crypto only — privacy first"
+      },
+      "bcCta": "SIGN UP ON BC.GAME →",
+      "rollbitCta": "SIGN UP ON ROLLBIT →",
+      "bcLicense": "Curacao licensed • Since 2017",
+      "rollbitLicense": "Licensed • Crypto native",
+      "bottomTitle": "NOT SURE WHICH TO PICK?",
+      "bottomSub": "Try both — sign up free on each platform and compare yourself",
+      "bottomBc": "BC.GAME →",
+      "bottomRollbit": "ROLLBIT →",
+      "rows": {
+        "welcomeBonus": "Welcome Bonus",
+        "gameCount": "Game Count",
+        "crash": "Crash Game",
+        "slots": "Slots (Pragmatic)",
+        "liveCasino": "Live Casino",
+        "esports": "Esports Betting",
+        "indonesian": "Indonesian",
+        "minDeposit": "Min. Deposit",
+        "withdrawal": "Withdrawal"
+      }
+    },
+    "title": "ARENA PROMO",
+    "subtitle": "Exclusive features & the best offers on HokiMainbet",
+    "updatedBadge": "ALWAYS UPDATED",
+    "countdown": {
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds"
+    },
+    "badges": {
+      "newPlayer": "NEW PLAYER",
+      "transparency": "100% TRANSPARENT",
+      "weekly": "WEEKLY",
+      "free": "FREE",
+      "tips": "TIPS & TRICKS"
+    },
+    "welcome": {
+      "title": "START WITH 1,000 FREE COINS",
+      "subtext": "Sign up now and play instantly — no deposit required",
+      "cta": "SIGN UP FREE →"
+    },
+    "provablyFair": {
+      "title": "EVERY ROUND CAN BE VERIFIED",
+      "desc": "Every game result on HokiMainbet is built from a client seed, server seed, and nonce — you can verify it yourself after each round. No hidden manipulation; full transparency across every demo game."
+    },
+    "leaderboard": {
+      "title": "WEEKLY CHALLENGE",
+      "subtext": "Become #1 this week",
+      "timerLabel": "Leaderboard reset",
+      "cta": "VIEW LEADERBOARD →"
+    },
+    "games": {
+      "title": "6 DEMO GAMES AVAILABLE",
+      "cta": "PLAY ALL →"
+    },
+    "blog": {
+      "title": "LEARN STRATEGY FROM THE EXPERTS",
+      "cta": "READ STRATEGY →",
+      "empty": "Strategy articles coming soon."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+---
+description: HokiMainbet next-intl — Indonesian default, English, no hard-coded UI strings
+globs: "**/{app,messages,components}/**/*"
+alwaysApply: false
+---
+
+# HokiMainbet — i18n
+
+- `/id/*` → Bahasa Indonesia (varsayılan)
+- `/en/*` → English
+- Tüm UI metinleri `messages/id.json` ve `messages/en.json`
+- Component içinde hard-coded Türkçe/İngilizce string bırakma
