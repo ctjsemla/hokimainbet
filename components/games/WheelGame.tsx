@@ -212,8 +212,7 @@ export function WheelGame() {
     const targetIndex = pickWheelSegmentIndex(multipliers.length);
     const multiplier = multipliers[targetIndex];
     const balanceAfterBet = balance - betAmount;
-
-    await persistBalance(balanceAfterBet);
+    void persistBalance(balanceAfterBet);
 
     pendingSpinRef.current = {
       bet: betAmount,

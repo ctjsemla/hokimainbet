@@ -2,7 +2,10 @@
 
 import { useCallback, useEffect } from "react";
 import { useAuth } from "@/components/providers/AuthProvider";
-import { DEMO_WELCOME_BALANCE, updateDemoBalance } from "@/lib/balance";
+import {
+  DEMO_WELCOME_BALANCE,
+  scheduleDemoBalanceSync,
+} from "@/lib/balance";
 
 const DEMO_BALANCE_STORAGE_KEY = "hokimainbet.demoBalance";
 
@@ -51,16 +54,11 @@ export function usePersistDemoBalance() {
       setDemoBalance(normalized);
       writeStoredBalance(normalized);
 
-      if (!user) return;
-
-      try {
-        await updateDemoBalance(user.id, normalized);
-        await refreshBalance();
-      } catch {
-        // Keep gameplay responsive even if profile sync fails in production.
+      if (user) {
+        scheduleDemoBalanceSync(user.id, normalized);
       }
     },
-    [user, setDemoBalance, refreshBalance],
+    [user, setDemoBalance],
   );
 
   return { balance, persistBalance, refreshBalance };

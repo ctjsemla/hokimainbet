@@ -94,7 +94,7 @@ export function DiceGame() {
       : 0;
 
     const balanceAfterBet = balance - betAmount;
-    await persistBalance(balanceAfterBet);
+    void persistBalance(balanceAfterBet);
 
     const scrambleInterval = setInterval(() => {
       setDisplayResult(randomDiceRoll());

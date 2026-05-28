@@ -16,6 +16,31 @@ export async function updateDemoBalance(userId: string, balance: number) {
   if (error) throw error;
 }
 
+const REMOTE_SYNC_TIMEOUT_MS = 5000;
+
+/** Fire-and-forget profile sync; never blocks gameplay UI. */
+export function scheduleDemoBalanceSync(userId: string, balance: number) {
+  if (!isSupabaseConfigured) return;
+
+  const normalized = Math.max(0, Math.round(balance * 100) / 100);
+
+  void (async () => {
+    try {
+      await Promise.race([
+        updateDemoBalance(userId, normalized),
+        new Promise<void>((_, reject) => {
+          setTimeout(
+            () => reject(new Error("demo balance sync timeout")),
+            REMOTE_SYNC_TIMEOUT_MS,
+          );
+        }),
+      ]);
+    } catch {
+      // Demo play must continue even if remote sync fails or stalls.
+    }
+  })();
+}
+
 export async function resetDemoBalance(userId: string) {
   await updateDemoBalance(userId, DEMO_WELCOME_BALANCE);
   return DEMO_WELCOME_BALANCE;

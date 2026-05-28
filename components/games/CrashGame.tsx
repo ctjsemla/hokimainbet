@@ -281,12 +281,13 @@ export function CrashGame() {
 
     setBetError(null);
     activeBetRef.current = betAmount;
-    balanceRef.current = balance;
-    await persistBalance(balanceRef.current - betAmount);
+    const balanceAfterBet = balance - betAmount;
+    balanceRef.current = balanceAfterBet;
     crashPointRef.current = generateCrashPoint();
     setMultiplier(1);
     setCountdown(3);
     setGameState("countdown");
+    void persistBalance(balanceAfterBet);
   }
 
   useEffect(() => {

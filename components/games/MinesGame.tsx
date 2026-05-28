@@ -103,7 +103,6 @@ export function MinesGame() {
     activeBetRef.current = betAmount;
     minesRef.current = generateMines(mineCount);
     balanceAfterBetRef.current = balance - betAmount;
-    await persistBalance(balanceAfterBetRef.current);
 
     const nextTiles: TileData[] = Array.from({ length: TOTAL_TILES }, (_, index) => ({
       index,
@@ -118,6 +117,7 @@ export function MinesGame() {
     setPulseGreen(false);
     setGameState("playing");
     setGridKey((k) => k + 1);
+    void persistBalance(balanceAfterBetRef.current);
   }
 
   async function handleCashOut() {

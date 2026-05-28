@@ -190,8 +190,6 @@ export function KenoGame() {
     const selectedArr = Array.from(selected);
     const balanceAfterBet = balance - betAmount;
 
-    await persistBalance(balanceAfterBet);
-
     drawSessionRef.current = {
       fullDraw,
       drawOrder,
@@ -205,6 +203,7 @@ export function KenoGame() {
     setDrawProgress(0);
     setResult(null);
     setPhase("drawing");
+    void persistBalance(balanceAfterBet);
   }
 
   function toggleNumber(num: number) {

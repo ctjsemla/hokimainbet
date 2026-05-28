@@ -147,7 +147,9 @@ export function PlinkoGame() {
     setBetError(null);
     lastDropRef.current = now;
 
-    await persistBalance(balanceRef.current - betAmount);
+    const balanceAfterBet = balanceRef.current - betAmount;
+    balanceRef.current = balanceAfterBet;
+    void persistBalance(balanceAfterBet);
 
     const { path, slotIndex, multiplier, waypoints } = resolvePlinkoDrop(
       rows,
