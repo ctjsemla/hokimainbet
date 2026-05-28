@@ -28,7 +28,7 @@ export function pickWheelSegmentIndex(segmentCount: number): number {
   return Math.floor(Math.random() * segmentCount);
 }
 
-/** Clockwise rotation (deg) so segment `targetIndex` lands at the bottom (pointer at top). */
+/** Clockwise rotation (deg) so segment `targetIndex` centers on the bottom pointer. */
 export function computeLandingRotation(
   targetIndex: number,
   segmentCount: number,

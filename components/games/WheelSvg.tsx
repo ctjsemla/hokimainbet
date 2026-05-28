@@ -114,10 +114,10 @@ export function WheelSvg({
     <div className="relative mx-auto aspect-square w-full max-w-[min(100%,520px)]">
       <m.div
         className="pointer-events-none absolute left-1/2 z-20 -translate-x-1/2"
-        style={{ top: `${((CY - R) / 400) * 100}%` }}
+        style={{ top: `${((CY + R) / 400) * 100}%` }}
         animate={
           pointerWobble
-            ? { scale: [1, 1.15, 0.95, 1], y: [0, 3, -2, 0] }
+            ? { scale: [1, 1.15, 0.95, 1], y: [0, -3, 2, 0] }
             : isSpinning
               ? { rotate: [-8, 8, -6, 6, 0] }
               : { rotate: 0, scale: 1, y: 0 }
@@ -131,9 +131,7 @@ export function WheelSvg({
         }
         aria-hidden
       >
-        <div className="-translate-y-full">
-          <div className="h-0 w-0 border-l-[14px] border-r-[14px] border-t-[26px] border-l-transparent border-r-transparent border-t-orange-500 drop-shadow-[0_0_14px_rgba(249,115,22,0.85)]" />
-        </div>
+        <div className="h-0 w-0 border-l-[14px] border-r-[14px] border-b-[26px] border-l-transparent border-r-transparent border-b-orange-500 drop-shadow-[0_0_14px_rgba(249,115,22,0.85)]" />
       </m.div>
       <svg
         viewBox="0 0 400 400"
