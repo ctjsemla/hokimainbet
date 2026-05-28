@@ -1,8 +1,10 @@
-import { getTranslations } from "next-intl/server";
+"use client";
+
+import { useTranslations } from "next-intl";
 import { AFFILIATE_HREF } from "@/lib/affiliate";
 
-export async function HomeCtaBanner() {
-  const t = await getTranslations("home");
+export function HomeCtaBanner() {
+  const t = useTranslations("home");
 
   return (
     <section className="mx-4 mb-16 overflow-hidden rounded-2xl bg-orange-500 px-8 py-14 md:mx-12 md:px-16 md:py-20">

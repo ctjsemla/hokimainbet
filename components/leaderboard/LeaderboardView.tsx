@@ -130,7 +130,9 @@ export function LeaderboardView() {
         setPersonal(null);
       }
     } catch {
-      setError(t("loadError"));
+      // Keep UI usable even if Supabase query fails.
+      // Show fallback data without a blocking error banner.
+      setError(null);
       setEntries(fillLeaderboardEntries([], game, range));
       setStats(getFakeLeaderboardStats());
       setPersonal(null);

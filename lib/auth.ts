@@ -1,5 +1,6 @@
 import { createBrowserClient, isSupabaseConfigured } from "@/lib/supabase";
 import type { Profile } from "@/types/database.types";
+import { DEMO_WELCOME_BALANCE } from "@/lib/balance";
 
 function getClient() {
   if (!isSupabaseConfigured) {
@@ -10,6 +11,29 @@ function getClient() {
   return createBrowserClient();
 }
 
+async function ensureProfile(
+  userId: string,
+  usernameSeed?: string | null,
+): Promise<void> {
+  const supabase = getClient();
+  const fallbackUsername = `user_${userId.slice(0, 8)}`;
+  const username = (usernameSeed?.trim() || fallbackUsername).slice(0, 20);
+
+  const { error } = await supabase.from("profiles").upsert(
+    {
+      id: userId,
+      username,
+      demo_balance: DEMO_WELCOME_BALANCE,
+    },
+    { onConflict: "id" },
+  );
+
+  // Never block auth flow if profile already exists or policy rejects after creation.
+  if (error && error.code !== "23505") {
+    console.warn("ensure profile skipped:", error.message);
+  }
+}
+
 export async function signUp(
   email: string,
   password: string,
@@ -18,8 +42,9 @@ export async function signUp(
 ) {
   const supabase = getClient();
 
+  const normalizedEmail = email.trim().toLowerCase();
   const { data, error } = await supabase.auth.signUp({
-    email,
+    email: normalizedEmail,
     password,
     options: {
       data: { username },
@@ -34,26 +59,50 @@ export async function signUp(
       .from("email_subscribers")
       .insert({
         user_id: data.user.id,
-        email,
+        email: normalizedEmail,
       });
 
+    // Newsletter opt-in should never block successful account creation.
     if (subscribeError && subscribeError.code !== "23505") {
-      throw subscribeError;
+      console.warn("newsletter subscribe skipped:", subscribeError.message);
     }
   }
 
-  return data;
+  if (data.session) {
+    await ensureProfile(data.user.id, username);
+    return data;
+  }
+
+  // Force immediate session for demo-mode onboarding.
+  // If dashboard still requires confirmation, this will fail and surface clearly.
+  const { data: signInData, error: signInError } =
+    await supabase.auth.signInWithPassword({
+      email: normalizedEmail,
+      password,
+    });
+
+  if (!signInError && signInData.session) {
+    await ensureProfile(data.user.id, username);
+    return signInData;
+  }
+  if (signInError) throw signInError;
+  throw new Error("Auto-login failed after sign up");
 }
 
 export async function signIn(email: string, password: string) {
   const supabase = getClient();
+  const normalizedEmail = email.trim().toLowerCase();
 
   const { data, error } = await supabase.auth.signInWithPassword({
-    email,
+    email: normalizedEmail,
     password,
   });
 
   if (error) throw error;
+  if (data.user) {
+    const username = (data.user.user_metadata?.username as string | undefined) ?? null;
+    await ensureProfile(data.user.id, username);
+  }
   return data;
 }
 

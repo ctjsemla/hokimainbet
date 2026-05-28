@@ -192,7 +192,9 @@
         "passwordRequired": "Password is required",
         "passwordLength": "Password must be at least 8 characters",
         "ageRequired": "You must be 18 years or older",
-        "generic": "Registration failed. Please try again."
+        "generic": "Registration failed. Please try again.",
+        "emailExists": "This email is already registered. Please sign in.",
+        "emailConfirmationRequired": "Please confirm your email before signing in."
       }
     },
     "login": {

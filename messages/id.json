@@ -192,7 +192,9 @@
         "passwordRequired": "Kata sandi wajib diisi",
         "passwordLength": "Kata sandi minimal 8 karakter",
         "ageRequired": "Anda harus berusia 18 tahun ke atas",
-        "generic": "Pendaftaran gagal. Coba lagi."
+        "generic": "Pendaftaran gagal. Coba lagi.",
+        "emailExists": "Email ini sudah terdaftar. Silakan masuk.",
+        "emailConfirmationRequired": "Silakan konfirmasi email dulu sebelum masuk."
       }
     },
     "login": {

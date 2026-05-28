@@ -2,6 +2,7 @@
 
 import { m } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 import { useState } from "react";
 import { AuthFormField } from "@/components/auth/AuthFormField";
 import { AuthFormPanel } from "@/components/auth/AuthFormPanel";
@@ -29,6 +30,8 @@ interface FormErrors {
 export default function RegisterPage() {
   const t = useTranslations("auth.register");
   const router = useRouter();
+  const params = useParams<{ locale?: string }>();
+  const locale = params?.locale === "en" ? "en" : "id";
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -87,13 +90,24 @@ export default function RegisterPage() {
     setErrors({});
 
     try {
-      await signUp(email.trim(), password, username.trim(), newsletter);
+      const result = await signUp(
+        email.trim(),
+        password,
+        username.trim(),
+        newsletter,
+      );
       setSuccessFlash(true);
       await new Promise((r) => setTimeout(r, 450));
+      if (!result.session) throw new Error("missing session");
       router.push("/");
       router.refresh();
-    } catch {
+    } catch (err) {
+      const message = err instanceof Error ? err.message.toLowerCase() : "";
+      if (message.includes("already registered")) {
+        setErrors({ form: t("errors.emailExists") });
+      } else {
       setErrors({ form: t("errors.generic") });
+      }
       triggerShake();
     } finally {
       setSubmitting(false);
@@ -192,7 +206,7 @@ export default function RegisterPage() {
               <p className="mt-6 font-sans text-sm text-[#94a3b8]">
                 {t("hasAccount")}{" "}
                 <Link
-                  href="/auth/login"
+                  href={`/${locale}/auth/login`}
                   className="font-medium text-orange-500 transition-colors hover:text-orange-400"
                 >
                   {t("loginLink")}
