@@ -10,7 +10,7 @@ import {
   type TocHeading,
 } from "@/types/blog.types";
 
-const BLOG_DIR = path.join(process.cwd(), "content/blog");
+const BLOG_ROOT_DIR = path.join(process.cwd(), "content/blog");
 
 function isBlogCategory(value: string): value is BlogCategory {
   return (BLOG_CATEGORIES as readonly string[]).includes(value);
@@ -25,9 +25,32 @@ function slugifyHeading(text: string): string {
     .trim();
 }
 
-function parsePostFile(filename: string): BlogPost | null {
+function getBlogDirectory(locale?: string): string {
+  if (!locale || locale === "id") {
+    return BLOG_ROOT_DIR;
+  }
+
+  const localizedDir = path.join(BLOG_ROOT_DIR, locale);
+  if (fs.existsSync(localizedDir)) {
+    return localizedDir;
+  }
+
+  return BLOG_ROOT_DIR;
+}
+
+function getPostFiles(locale?: string): string[] {
+  const blogDir = getBlogDirectory(locale);
+  if (!fs.existsSync(blogDir)) {
+    return [];
+  }
+
+  return fs.readdirSync(blogDir).filter((file) => file.endsWith(".mdx"));
+}
+
+function parsePostFile(filename: string, locale?: string): BlogPost | null {
   const slug = filename.replace(/\.mdx$/, "");
-  const filePath = path.join(BLOG_DIR, filename);
+  const blogDir = getBlogDirectory(locale);
+  const filePath = path.join(blogDir, filename);
   const raw = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(raw);
 
@@ -54,17 +77,9 @@ function parsePostFile(filename: string): BlogPost | null {
   };
 }
 
-export function getAllPosts(): BlogPostMeta[] {
-  if (!fs.existsSync(BLOG_DIR)) {
-    return [];
-  }
-
-  const files = fs
-    .readdirSync(BLOG_DIR)
-    .filter((file) => file.endsWith(".mdx"));
-
-  return files
-    .map((file) => parsePostFile(file))
+export function getAllPosts(locale?: string): BlogPostMeta[] {
+  return getPostFiles(locale)
+    .map((file) => parsePostFile(file, locale))
     .filter((post): post is BlogPost => post !== null)
     .sort(
       (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
@@ -94,24 +109,54 @@ export function getAllPosts(): BlogPostMeta[] {
     );
 }
 
-export function getPostBySlug(slug: string): BlogPost | null {
-  const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
-  if (!fs.existsSync(filePath)) {
-    return null;
+export function getPostBySlug(slug: string, locale?: string): BlogPost | null {
+  const blogDir = getBlogDirectory(locale);
+  const localizedPath = path.join(blogDir, `${slug}.mdx`);
+  if (fs.existsSync(localizedPath)) {
+    return parsePostFile(`${slug}.mdx`, locale);
   }
-  return parsePostFile(`${slug}.mdx`);
+
+  if (locale && locale !== "id") {
+    const fallbackPath = path.join(BLOG_ROOT_DIR, `${slug}.mdx`);
+    if (fs.existsSync(fallbackPath)) {
+      return parsePostFile(`${slug}.mdx`);
+    }
+  }
+
+  if (!locale) {
+    const defaultPath = path.join(BLOG_ROOT_DIR, `${slug}.mdx`);
+    if (fs.existsSync(defaultPath)) {
+      return parsePostFile(`${slug}.mdx`);
+    }
+  }
+
+  return null;
 }
 
-export function getAllPostSlugs(): string[] {
-  return getAllPosts().map((post) => post.slug);
+export function getAllPostSlugs(locale?: string): string[] {
+  if (!locale) {
+    const allFiles = [
+      ...getPostFiles("id"),
+      ...getPostFiles("en"),
+    ].map((file) => file.replace(/\.mdx$/, ""));
+    return Array.from(new Set(allFiles));
+  }
+
+  const files = getPostFiles(locale);
+  if (files.length === 0 && locale !== "id") {
+    return getPostFiles("id").map((file) => file.replace(/\.mdx$/, ""));
+  }
+
+  return files.map((file) => file.replace(/\.mdx$/, ""));
 }
 
 export function getRelatedPosts(
   slug: string,
   category: BlogCategory,
   limit = 3,
+  locale?: string,
 ): BlogPostMeta[] {
-  return getAllPosts()
+  return getAllPosts(locale)
     .filter((post) => post.slug !== slug && post.category === category)
     .slice(0, limit);
 }

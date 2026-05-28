@@ -34,7 +34,7 @@ export async function generateMetadata({
 }
 
 export default function BlogPage({ params: { locale } }: BlogPageProps) {
-  const posts = getAllPosts();
+  const posts = getAllPosts(locale);
 
   return <BlogListing posts={posts} locale={locale} />;
 }

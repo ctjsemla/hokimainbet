@@ -13,7 +13,7 @@ interface HomePageProps {
 }
 
 export default function HomePage({ params: { locale } }: HomePageProps) {
-  const latestPosts = getAllPosts().slice(0, 3);
+  const latestPosts = getAllPosts(locale).slice(0, 3);
 
   return (
     <>

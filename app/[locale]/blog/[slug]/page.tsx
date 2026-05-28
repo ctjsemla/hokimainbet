@@ -26,7 +26,9 @@ interface BlogPostPageProps {
 }
 
 export function generateStaticParams() {
-  const slugs = getAllPostSlugs();
+  const slugs = Array.from(
+    new Set(routing.locales.flatMap((locale) => getAllPostSlugs(locale))),
+  );
   return routing.locales.flatMap((locale) =>
     slugs.map((slug) => ({ locale, slug })),
   );
@@ -35,7 +37,7 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params: { locale, slug },
 }: BlogPostPageProps): Promise<Metadata> {
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug(slug, locale);
   if (!post) {
     return { title: "Not Found | HokiMainbet" };
   }
@@ -74,14 +76,14 @@ export async function generateMetadata({
 export default async function BlogPostPage({
   params: { locale, slug },
 }: BlogPostPageProps) {
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug(slug, locale);
   if (!post) {
     notFound();
   }
 
   const { content } = await renderMdx(post.content);
   const headings = extractHeadings(post.content);
-  const related = getRelatedPosts(slug, post.category, 3);
+  const related = getRelatedPosts(slug, post.category, 3, locale);
   const shareUrl = blogPostUrl(locale, slug);
   const imageUrl = getOgImageUrl(post);
   const t = await getTranslations({ locale, namespace: "blog" });

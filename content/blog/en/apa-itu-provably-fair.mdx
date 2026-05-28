@@ -1,0 +1,51 @@
+---
+title: "What Is Provably Fair?"
+description: "Understand provably fair in crypto casinos: server seed, client seed, nonce, and how to verify game outcomes."
+category: "Crypto"
+date: "2026-01-05"
+author: "HokiMainbet Team"
+readTime: "7 min"
+tags:
+  - provably fair
+  - stake
+  - crypto casino
+  - transparency
+  - verification
+---
+
+**Provably Fair** is a cryptographic system that allows players to verify that game results were not altered after bets were placed. It is a key transparency feature used by major crypto casinos.
+
+## Why It Matters
+
+Traditional casinos rely on licenses and third-party audits. Provably fair adds direct player-level verification: you can inspect the math behind each result.
+
+## Core Components
+
+### Server Seed (hash)
+
+Before play, the platform reveals the hash of a hidden server seed. The real seed is revealed later, preventing retroactive manipulation.
+
+### Client Seed
+
+Your client seed (custom or random) combines with the server seed to generate outcomes through a hash function.
+
+### Nonce
+
+A round counter that ensures each bet produces a unique result even with the same seed pair.
+
+## Basic Verification Flow
+
+1. Save the pre-game server seed hash.
+2. Play and record your result.
+3. After seed reveal, input server seed + client seed + nonce into verifier.
+4. Confirm the computed output matches the displayed game result.
+
+## In-Game Examples
+
+- **Crash:** multiplier derives from the seed combination.
+- **Dice:** roll value is generated from the same deterministic source.
+- **Mines/Plinko:** board pattern can be reconstructed when algorithm details are published.
+
+## Final Takeaway
+
+Provably fair turns trust into verifiable proof. Learning seed + nonce verification is one of the best habits for serious crypto casino players.
