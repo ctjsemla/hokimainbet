@@ -15,34 +15,38 @@ export async function saveScore(
   betAmount: number,
   score: number,
 ) {
-  const supabase = getClient();
-  const user = await getUser();
+  try {
+    const supabase = getClient();
+    const user = await getUser();
 
-  if (!user) {
-    throw new Error("Not authenticated");
+    if (!user) {
+      return null;
+    }
+
+    const profile = await getUserProfile(user.id);
+
+    if (!profile) {
+      return null;
+    }
+
+    const { data, error } = await supabase
+      .from("game_scores")
+      .insert({
+        user_id: user.id,
+        username: profile.username,
+        game,
+        score,
+        multiplier,
+        bet_amount: betAmount,
+      })
+      .select()
+      .single();
+
+    if (error) return null;
+    return data;
+  } catch {
+    return null;
   }
-
-  const profile = await getUserProfile(user.id);
-
-  if (!profile) {
-    throw new Error("Profile not found");
-  }
-
-  const { data, error } = await supabase
-    .from("game_scores")
-    .insert({
-      user_id: user.id,
-      username: profile.username,
-      game,
-      score,
-      multiplier,
-      bet_amount: betAmount,
-    })
-    .select()
-    .single();
-
-  if (error) throw error;
-  return data;
 }
 
 export async function getLeaderboard(game: GameType, limit = 10) {
