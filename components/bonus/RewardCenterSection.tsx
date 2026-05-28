@@ -486,9 +486,10 @@ export function RewardCenterSection() {
               </button>
             </div>
             <div className="relative mx-auto h-[420px] w-[420px]">
-              <div className="pointer-events-none absolute left-1/2 top-0 z-20 -translate-x-1/2 -translate-y-2">
-                <div className="mx-auto h-4 w-1 rounded-full bg-orange-400 shadow-[0_0_10px_rgba(251,146,60,0.7)]" />
-                <div className="h-0 w-0 border-l-[12px] border-r-[12px] border-t-[20px] border-l-transparent border-r-transparent border-t-orange-500 drop-shadow-[0_0_12px_rgba(249,115,22,0.7)]" />
+              <div className="pointer-events-none absolute left-1/2 top-0 z-30 -translate-x-1/2">
+                <div className="-translate-y-full">
+                  <div className="h-0 w-0 border-l-[14px] border-r-[14px] border-t-[26px] border-l-transparent border-r-transparent border-t-orange-500 drop-shadow-[0_0_14px_rgba(249,115,22,0.85)]" />
+                </div>
               </div>
               <m.div
                 className="h-full w-full rounded-full border-4 border-orange-500"

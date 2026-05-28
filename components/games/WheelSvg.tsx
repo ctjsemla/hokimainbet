@@ -15,9 +15,6 @@ const CX = 200;
 const CY = 200;
 const R = 168;
 const INNER_R = 52;
-const POINTER_GAP = 16;
-const POINTER_TIP_Y = CY - R - POINTER_GAP;
-
 export type WheelHighlightPhase = "none" | "white" | "gold";
 
 interface WheelSvgProps {
@@ -70,59 +67,6 @@ function labelFontSize(segmentCount: number): number {
   return 12;
 }
 
-function WheelPointer({
-  isSpinning,
-  pointerWobble,
-}: {
-  isSpinning: boolean;
-  pointerWobble: boolean;
-}) {
-  return (
-    <m.g
-      transform={`translate(${CX - 16}, ${POINTER_TIP_Y - 24})`}
-      style={{ transformOrigin: "16px 24px" }}
-      animate={
-        pointerWobble
-          ? {
-              scale: [1, 1.2, 0.9, 1],
-              y: [0, 4, -2, 0],
-              rotate: 0,
-            }
-          : isSpinning
-            ? { rotate: [-15, 15, -12, 12, 0] }
-            : { rotate: 0, scale: 1, y: 0 }
-      }
-      transition={
-        pointerWobble
-          ? { type: "spring", stiffness: 520, damping: 14 }
-          : isSpinning
-            ? {
-                duration: 0.45,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }
-            : { type: "spring", stiffness: 400, damping: 22 }
-      }
-    >
-      <svg
-        width="32"
-        height="24"
-        viewBox="0 0 32 24"
-        aria-hidden
-        style={{ filter: "drop-shadow(0 4px 12px rgba(249,115,22,0.6))" }}
-      >
-        <path
-          d="M16 24 L30 6 L26 6 L16 16 L6 6 L2 6 Z"
-          fill="#f97316"
-          stroke="#ffffff"
-          strokeWidth="2"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </m.g>
-  );
-}
-
 export function WheelSvg({
   multipliers,
   rotation,
@@ -168,6 +112,29 @@ export function WheelSvg({
 
   return (
     <div className="relative mx-auto aspect-square w-full max-w-[min(100%,520px)]">
+      <m.div
+        className="pointer-events-none absolute left-1/2 z-20 -translate-x-1/2"
+        style={{ top: `${((CY - R) / 400) * 100}%` }}
+        animate={
+          pointerWobble
+            ? { scale: [1, 1.15, 0.95, 1], y: [0, 3, -2, 0] }
+            : isSpinning
+              ? { rotate: [-8, 8, -6, 6, 0] }
+              : { rotate: 0, scale: 1, y: 0 }
+        }
+        transition={
+          pointerWobble
+            ? { type: "spring", stiffness: 520, damping: 14 }
+            : isSpinning
+              ? { duration: 0.45, repeat: Infinity, ease: "easeInOut" }
+              : { type: "spring", stiffness: 400, damping: 22 }
+        }
+        aria-hidden
+      >
+        <div className="-translate-y-full">
+          <div className="h-0 w-0 border-l-[14px] border-r-[14px] border-t-[26px] border-l-transparent border-r-transparent border-t-orange-500 drop-shadow-[0_0_14px_rgba(249,115,22,0.85)]" />
+        </div>
+      </m.div>
       <svg
         viewBox="0 0 400 400"
         className="h-full w-full overflow-visible"
@@ -183,8 +150,6 @@ export function WheelSvg({
             <feComposite in="SourceGraphic" in2="innerGlow" operator="over" />
           </filter>
         </defs>
-
-        <WheelPointer isSpinning={isSpinning} pointerWobble={pointerWobble} />
 
         <m.g
           style={{ transformOrigin: `${CX}px ${CY}px` }}

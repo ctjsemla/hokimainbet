@@ -190,6 +190,20 @@ export function PlinkoGame() {
   ]);
 
   useEffect(() => {
+    if (activeBalls.length === 0) return;
+
+    const maxDuration = Math.max(
+      ...activeBalls.map((ball) => ball.duration),
+      getDropDurationMs(rows) + 2000,
+    );
+    const timeout = setTimeout(() => {
+      setActiveBalls([]);
+    }, maxDuration);
+
+    return () => clearTimeout(timeout);
+  }, [activeBalls, rows]);
+
+  useEffect(() => {
     if (!autoMode) {
       if (autoTimerRef.current) {
         clearInterval(autoTimerRef.current);
@@ -232,7 +246,7 @@ export function PlinkoGame() {
                   key={level}
                   type="button"
                   onClick={() => setRisk(level)}
-                  disabled={activeBalls.length > 0 && !autoMode}
+                  disabled={autoMode && activeBalls.length > 0}
                   className={cn(
                     "flex-1 rounded-full py-2 text-xs font-semibold capitalize transition-colors duration-200",
                     risk === level
@@ -254,7 +268,7 @@ export function PlinkoGame() {
                   key={rowOption}
                   type="button"
                   onClick={() => setRows(rowOption)}
-                  disabled={activeBalls.length > 0 && !autoMode}
+                  disabled={autoMode && activeBalls.length > 0}
                   className={cn(
                     "flex-1 rounded-md py-2 text-sm font-semibold transition-colors duration-200",
                     rows === rowOption
@@ -340,15 +354,15 @@ export function PlinkoGame() {
                 type="button"
                 onClick={() => setAutoMode((v) => !v)}
                 className={cn(
-                  "relative h-6 w-11 rounded-full transition-colors duration-200",
+                  "relative h-7 w-12 shrink-0 rounded-full transition-colors duration-200",
                   autoMode ? "bg-orange-500" : "bg-navy-700",
                 )}
                 aria-pressed={autoMode}
               >
                 <span
                   className={cn(
-                    "absolute top-0.5 h-5 w-5 rounded-full bg-white transition-transform duration-200",
-                    autoMode ? "translate-x-5" : "translate-x-0.5",
+                    "pointer-events-none absolute top-1/2 block h-5 w-5 -translate-y-1/2 rounded-full bg-white shadow transition-all duration-200",
+                    autoMode ? "left-[calc(100%-1.375rem)]" : "left-0.5",
                   )}
                 />
               </button>

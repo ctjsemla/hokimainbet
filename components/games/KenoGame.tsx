@@ -40,7 +40,7 @@ interface HistoryItem {
 
 const MIN_BET = 10;
 const FLASH_MS = 100;
-const RESULT_RESET_MS = 4000;
+const RESULT_RESET_MS = 2500;
 
 type CellPhase = "idle" | "flash" | "revealed";
 
@@ -78,6 +78,7 @@ export function KenoGame() {
     bet: number;
     balanceAfterBet: number;
   } | null>(null);
+  const resetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const pickCount = selected.size;
   const payoutTable = useMemo(
@@ -86,7 +87,12 @@ export function KenoGame() {
   );
 
   const resetRound = useCallback(() => {
+    if (resetTimerRef.current) {
+      clearTimeout(resetTimerRef.current);
+      resetTimerRef.current = null;
+    }
     setPhase("picking");
+    setSelected(new Set());
     setDrawnNumbers([]);
     setRevealedDrawn(new Set());
     setFlashingNumber(null);
@@ -94,6 +100,15 @@ export function KenoGame() {
     setResult(null);
     drawSessionRef.current = null;
   }, []);
+
+  useEffect(
+    () => () => {
+      if (resetTimerRef.current) {
+        clearTimeout(resetTimerRef.current);
+      }
+    },
+    [],
+  );
 
   const finishDraw = useCallback(
     async (session: NonNullable<typeof drawSessionRef.current>) => {
@@ -108,14 +123,16 @@ export function KenoGame() {
       setResult({ matches, multiplier, payout });
       setPhase("result");
 
-      if (won) {
-        await persistBalance(session.balanceAfterBet + payout);
-        if (user) {
-          await saveScore("keno", multiplier, session.bet, payout);
+      void (async () => {
+        if (won) {
+          await persistBalance(session.balanceAfterBet + payout);
+          if (user) {
+            await saveScore("keno", multiplier, session.bet, payout);
+          }
+        } else if (user) {
+          await saveScore("keno", 0, session.bet, 0);
         }
-      } else if (user) {
-        await saveScore("keno", 0, session.bet, 0);
-      }
+      })();
 
       setHistory((prev) =>
         [
@@ -130,7 +147,9 @@ export function KenoGame() {
         ].slice(0, 5),
       );
 
-      setTimeout(resetRound, RESULT_RESET_MS);
+      resetTimerRef.current = setTimeout(() => {
+        resetRound();
+      }, RESULT_RESET_MS);
     },
     [persistBalance, resetRound, user],
   );
@@ -268,7 +287,17 @@ export function KenoGame() {
   }
 
   const isInteractive = phase === "picking";
+  const isResultPhase = phase === "result";
   const canStart = pickCount >= KENO_MIN_PICKS && phase === "picking";
+  const primaryActionEnabled = canStart || isResultPhase;
+
+  function handlePrimaryAction() {
+    if (isResultPhase) {
+      resetRound();
+      return;
+    }
+    void handleStart();
+  }
 
   return (
     <GamePageShell>
@@ -369,13 +398,17 @@ export function KenoGame() {
 
             <m.button
               type="button"
-              disabled={!canStart}
-              onClick={() => void handleStart()}
-              whileHover={canStart ? { scale: 1.02 } : undefined}
-              whileTap={canStart ? { scale: 0.98 } : undefined}
+              disabled={!primaryActionEnabled}
+              onClick={handlePrimaryAction}
+              whileHover={primaryActionEnabled ? { scale: 1.02 } : undefined}
+              whileTap={primaryActionEnabled ? { scale: 0.98 } : undefined}
               className="btn-press btn-cta-shimmer mb-3 flex h-14 w-full items-center justify-center rounded-lg bg-orange-500 font-display text-3xl tracking-[0.08em] text-white disabled:opacity-50"
             >
-              {canStart ? t("start") : t("pickMinimum")}
+              {isResultPhase
+                ? t("playAgain")
+                : canStart
+                  ? t("start")
+                  : t("pickMinimum")}
             </m.button>
 
             <button
