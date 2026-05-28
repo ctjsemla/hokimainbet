@@ -14,7 +14,7 @@ export async function HomeBlogSection({
   posts,
   locale,
 }: HomeBlogSectionProps) {
-  const t = await getTranslations("home");
+  const t = await getTranslations({ locale, namespace: "home" });
 
   if (posts.length === 0) {
     return null;

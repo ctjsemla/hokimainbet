@@ -120,7 +120,7 @@ export default async function BlogPostPage({
             </div>
 
             <div className="mt-16">
-              <PostBottomCta />
+              <PostBottomCta locale={locale} />
             </div>
           </div>
 

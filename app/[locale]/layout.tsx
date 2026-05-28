@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, unstable_setRequestLocale } from "next-intl/server";
+import { unstable_setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
@@ -39,7 +39,7 @@ export default async function LocaleLayout({
 
   unstable_setRequestLocale(locale);
 
-  const messages = await getMessages();
+  const messages = (await import(`../../messages/${locale}.json`)).default;
 
   return (
     <html lang={locale} className={fontVariables} suppressHydrationWarning>

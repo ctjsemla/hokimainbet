@@ -1,8 +1,12 @@
 import { getTranslations } from "next-intl/server";
 import { AffiliateButton } from "@/components/ui/AffiliateButton";
 
-export async function PostBottomCta() {
-  const t = await getTranslations("blog");
+interface PostBottomCtaProps {
+  locale: string;
+}
+
+export async function PostBottomCta({ locale }: PostBottomCtaProps) {
+  const t = await getTranslations({ locale, namespace: "blog" });
 
   return (
     <div className="relative overflow-hidden rounded-2xl border border-navy-700 bg-gradient-to-r from-navy-900 via-navy-800 to-navy-900 px-8 py-10">
