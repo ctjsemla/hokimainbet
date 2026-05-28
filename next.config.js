@@ -1,4 +1,5 @@
-const withNextIntl = require("next-intl/plugin")("./i18n.ts");
+const createNextIntlPlugin = require("next-intl/plugin");
+const withNextIntl = createNextIntlPlugin("./i18n.ts");
 const createMDX = require("@next/mdx");
 
 const withMDX = createMDX({
