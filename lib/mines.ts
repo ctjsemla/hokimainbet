@@ -1,6 +1,8 @@
+import { PLAYER_RETURN_FACTOR } from "@/lib/gameEconomy";
+
 const GRID_SIZE = 5;
 const TOTAL_TILES = GRID_SIZE * GRID_SIZE;
-const HOUSE_EDGE = 0.99;
+const HOUSE_EDGE = PLAYER_RETURN_FACTOR;
 
 export function generateMines(mineCount: number): Set<number> {
   const indices = Array.from({ length: TOTAL_TILES }, (_, i) => i);
@@ -32,7 +34,7 @@ export function calculateMinesMultiplier(
     mult *= stepOdds * acceleration;
   }
 
-  const progressiveFloor = 1.1 + (safeReveals - 1) * (0.18 + 24 / mineCount / 10);
+  const progressiveFloor = 1.15 + (safeReveals - 1) * (0.2 + 24 / mineCount / 10);
   mult = Math.max(mult, progressiveFloor);
 
   return Math.round(mult * 100) / 100;

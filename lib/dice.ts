@@ -1,3 +1,5 @@
+import { PLAYER_RETURN_FACTOR } from "@/lib/gameEconomy";
+
 export type RollMode = "under" | "over";
 
 export function randomDiceRoll(): number {
@@ -10,9 +12,9 @@ export function getWinChance(threshold: number, mode: RollMode): number {
 
 export function getDiceMultiplier(threshold: number, mode: RollMode): number {
   if (mode === "under") {
-    return (100 / (threshold - 1)) * 0.99;
+    return (100 / (threshold - 1)) * PLAYER_RETURN_FACTOR;
   }
-  return (100 / (100 - threshold)) * 0.99;
+  return (100 / (100 - threshold)) * PLAYER_RETURN_FACTOR;
 }
 
 export function checkDiceWin(

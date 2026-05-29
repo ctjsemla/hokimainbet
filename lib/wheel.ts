@@ -10,9 +10,9 @@ export const WHEEL_BASE_MULTIPLIERS: Record<
   WheelRisk,
   readonly number[]
 > = {
-  low: [2, 5, 2, 0, 5, 2, 0, 2, 5, 10],
-  medium: [5, 0, 2, 0, 10, 0, 2, 0, 5, 0],
-  high: [0, 0, 0, 10, 0, 0, 0, 5, 0, 10],
+  low: [2, 5, 2, 1, 5, 2, 1, 2, 5, 10],
+  medium: [5, 1, 2, 1, 10, 1, 2, 1, 5, 2],
+  high: [1, 1, 2, 10, 1, 1, 2, 5, 1, 10],
 };
 
 export function buildWheelMultipliers(
