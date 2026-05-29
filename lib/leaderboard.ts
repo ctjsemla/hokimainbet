@@ -24,6 +24,19 @@ export interface PersonalLeaderboardStats {
 }
 
 const ACTIVE_WINDOW_MS = 30 * 60 * 1000;
+const QUERY_TIMEOUT_MS = 10_000;
+
+async function withQueryTimeout<T>(promise: PromiseLike<T>): Promise<T> {
+  return Promise.race([
+    Promise.resolve(promise),
+    new Promise<T>((_, reject) => {
+      setTimeout(
+        () => reject(new Error("leaderboard query timeout")),
+        QUERY_TIMEOUT_MS,
+      );
+    }),
+  ]);
+}
 
 function getClient() {
   if (!isSupabaseConfigured) {
@@ -118,10 +131,11 @@ export async function fetchLeaderboard(
     query = query.gte("played_at", start);
   }
 
-  const { data, error } = await query;
+  const { data, error } = await withQueryTimeout(query);
   if (error) throw error;
 
-  return rankScores((data ?? []) as GameScore[]);
+  const real = rankScores((data ?? []) as GameScore[]);
+  return real;
 }
 
 export async function fetchLeaderboardStats(): Promise<LeaderboardStats> {
@@ -129,22 +143,24 @@ export async function fetchLeaderboardStats(): Promise<LeaderboardStats> {
   const todayStart = getTodayStart();
   const activeSince = new Date(Date.now() - ACTIVE_WINDOW_MS).toISOString();
 
-  const [todayResult, maxResult, activeResult] = await Promise.all([
-    supabase
-      .from("game_scores")
-      .select("id", { count: "exact", head: true })
-      .gte("played_at", todayStart),
-    supabase
-      .from("game_scores")
-      .select("multiplier")
-      .order("multiplier", { ascending: false })
-      .limit(1)
-      .maybeSingle(),
-    supabase
-      .from("game_scores")
-      .select("user_id")
-      .gte("played_at", activeSince),
-  ]);
+  const [todayResult, maxResult, activeResult] = await withQueryTimeout(
+    Promise.all([
+      supabase
+        .from("game_scores")
+        .select("id", { count: "exact", head: true })
+        .gte("played_at", todayStart),
+      supabase
+        .from("game_scores")
+        .select("multiplier")
+        .order("multiplier", { ascending: false })
+        .limit(1)
+        .maybeSingle(),
+      supabase
+        .from("game_scores")
+        .select("user_id")
+        .gte("played_at", activeSince),
+    ]),
+  );
 
   if (todayResult.error) throw todayResult.error;
   if (maxResult.error) throw maxResult.error;
@@ -184,7 +200,7 @@ export async function fetchPersonalStats(
     query = query.gte("played_at", start);
   }
 
-  const { data, error } = await query;
+  const { data, error } = await withQueryTimeout(query);
   if (error) throw error;
 
   const scores = (data ?? []) as GameScore[];

@@ -106,7 +106,7 @@ export function fillLeaderboardEntries(
     ...fakeCandidates,
   ];
 
-  combined.sort((a, b) => Number(b.score) - Number(a.score));
+  combined.sort((a, b) => Number(b.multiplier) - Number(a.multiplier));
 
   const capped = combined.slice(0, 50);
   return rankScores(capped);

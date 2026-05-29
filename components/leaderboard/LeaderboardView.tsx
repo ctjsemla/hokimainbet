@@ -61,7 +61,7 @@ export function LeaderboardView() {
   const { user } = useAuth();
 
   const [game, setGame] = useState<GameFilter>("all");
-  const [range, setRange] = useState<TimeRange>("week");
+  const [range, setRange] = useState<TimeRange>("today");
   const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
   const [stats, setStats] = useState<LeaderboardStats | null>(null);
   const [personal, setPersonal] = useState<PersonalLeaderboardStats | null>(null);
@@ -92,13 +92,14 @@ export function LeaderboardView() {
     return best?.id ?? null;
   }, [entries, user]);
 
-  const loadData = useCallback(async () => {
+  const loadBoard = useCallback(async () => {
     if (!isSupabaseConfigured) {
       const filled = fillLeaderboardEntries([], game, range);
       setEntries(filled);
       setStats(getFakeLeaderboardStats());
       setPersonal(null);
       setLoading(false);
+      setPersonalLoading(false);
       setError(null);
       return;
     }
@@ -106,45 +107,53 @@ export function LeaderboardView() {
     setLoading(true);
     setError(null);
 
+    let board: LeaderboardEntry[] = [];
+    let boardStats: LeaderboardStats | null = null;
+
     try {
-      const [board, boardStats] = await Promise.all([
+      [board, boardStats] = await Promise.all([
         fetchLeaderboard(game, range),
         fetchLeaderboardStats(),
       ]);
 
-      setEntries(board);
+      const filled = fillLeaderboardEntries(board, game, range);
+      setEntries(filled);
       setStats(boardStats);
       recentScoresRef.current = board;
-
-      if (user) {
-        setPersonalLoading(true);
-        const personalStats = await fetchPersonalStats(
-          user.id,
-          game,
-          range,
-          board,
-        );
-        setPersonal(personalStats);
-        setPersonalLoading(false);
-      } else {
-        setPersonal(null);
-      }
     } catch {
-      // Keep UI usable even if Supabase query fails.
-      // Show fallback data without a blocking error banner.
-      setError(null);
       setEntries(fillLeaderboardEntries([], game, range));
       setStats(getFakeLeaderboardStats());
-      setPersonal(null);
-      setPersonalLoading(false);
+      recentScoresRef.current = [];
     } finally {
       setLoading(false);
     }
-  }, [game, range, t, user]);
+
+    if (!user) {
+      setPersonal(null);
+      setPersonalLoading(false);
+      return;
+    }
+
+    setPersonalLoading(true);
+    try {
+      const displayBoard = fillLeaderboardEntries(board, game, range);
+      const personalStats = await fetchPersonalStats(
+        user.id,
+        game,
+        range,
+        displayBoard,
+      );
+      setPersonal(personalStats);
+    } catch {
+      setPersonal(null);
+    } finally {
+      setPersonalLoading(false);
+    }
+  }, [game, range, user]);
 
   useEffect(() => {
-    void loadData();
-  }, [loadData]);
+    void loadBoard();
+  }, [loadBoard]);
 
   useEffect(() => {
     if (!isSupabaseConfigured) return;
@@ -199,16 +208,22 @@ export function LeaderboardView() {
           }, 1200);
 
           setEntries((prev) => {
-            const merged = mergeScore(prev, score);
+            const realOnly = prev.filter((entry) => !entry.id.startsWith("fake-"));
+            const mergedReal = mergeScore(realOnly, score);
+            const filled = fillLeaderboardEntries(
+              mergedReal,
+              activeGame,
+              activeRange,
+            );
             if (activeUser && score.user_id === activeUser.id) {
               void fetchPersonalStats(
                 activeUser.id,
                 activeGame,
                 activeRange,
-                merged,
+                filled,
               ).then(setPersonal);
             }
-            return merged;
+            return filled;
           });
         },
       )

@@ -50,7 +50,7 @@ export function PersonalStatsSidebar({
         {t("yourStats")}
       </p>
 
-      {loading || !stats ? (
+      {loading ? (
         <div className="mt-6 space-y-4">
           {[1, 2, 3, 4].map((i) => (
             <div key={i} className="h-10 animate-pulse rounded bg-navy-800" />
@@ -61,19 +61,19 @@ export function PersonalStatsSidebar({
           <div>
             <p className="text-sm text-[#94a3b8]">{t("yourRank")}</p>
             <m.p
-              key={stats.rank ?? "none"}
+              key={stats?.rank ?? "none"}
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               className="font-display text-6xl leading-none text-white"
             >
-              {stats.rank ? `#${stats.rank}` : "—"}
+              {stats?.rank ? `#${stats.rank}` : "—"}
             </m.p>
           </div>
 
           <div>
             <p className="text-sm text-[#94a3b8]">{t("bestMultiplier")}</p>
             <p className="font-display text-4xl text-orange-400">
-              {formatMultiplier(stats.bestMultiplier)}
+              {formatMultiplier(stats?.bestMultiplier ?? 0)}
             </p>
           </div>
 
@@ -87,7 +87,7 @@ export function PersonalStatsSidebar({
                 >
                   <span>{t(`games.${game}`)}</span>
                   <span className="font-display text-lg text-white">
-                    {stats.bestByGame[game]
+                    {stats?.bestByGame[game]
                       ? formatMultiplier(stats.bestByGame[game]!)
                       : "—"}
                   </span>
@@ -100,7 +100,7 @@ export function PersonalStatsSidebar({
             <div>
               <p className="text-xs text-[#94a3b8]">{t("totalGames")}</p>
               <p className="font-display text-3xl text-white">
-                {stats.totalGames}
+                {stats?.totalGames ?? 0}
               </p>
             </div>
             <div>
@@ -108,11 +108,13 @@ export function PersonalStatsSidebar({
               <p
                 className={cn(
                   "font-display text-3xl",
-                  stats.totalProfit >= 0 ? "text-[#22c55e]" : "text-[#ef4444]",
+                  (stats?.totalProfit ?? 0) >= 0
+                    ? "text-[#22c55e]"
+                    : "text-[#ef4444]",
                 )}
               >
-                {stats.totalProfit >= 0 ? "+" : ""}
-                {formatCurrency(stats.totalProfit)}
+                {(stats?.totalProfit ?? 0) >= 0 ? "+" : ""}
+                {formatCurrency(stats?.totalProfit ?? 0)}
               </p>
             </div>
           </div>
