@@ -505,7 +505,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
             </span>
             <span className="flex shrink-0 items-center gap-2">
               <span className="rounded bg-navy-700 px-2 py-0.5 font-sans text-xs font-semibold text-orange-500">
-                {t("slotGamesCount")}
+                {slots.length}
               </span>
               <ChevronDown
                 className={cn(
