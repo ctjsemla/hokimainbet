@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { AFFILIATE_HREF } from "@/lib/affiliate";
+import { Link } from "@/i18n/navigation";
 
 export function HomeCtaBanner() {
   const t = useTranslations("home");
@@ -13,14 +13,12 @@ export function HomeCtaBanner() {
           {t("ctaBannerTitle")}
         </h2>
         <p className="mt-4 text-lg text-white/90 md:text-xl">{t("ctaBannerSub")}</p>
-        <a
-          href={AFFILIATE_HREF}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          href="/bonus"
           className="btn-cta-shimmer mt-8 inline-flex rounded-lg bg-navy-950 px-10 py-4 font-sans text-lg font-bold tracking-wide text-white"
         >
           {t("ctaBannerButton")}
-        </a>
+        </Link>
       </div>
     </section>
   );

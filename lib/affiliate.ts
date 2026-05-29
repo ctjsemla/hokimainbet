@@ -1,6 +1,10 @@
 import { createBrowserClient, isSupabaseConfigured } from "@/lib/supabase";
 
-export const AFFILIATE_HREF = "https://stake.com/?c=AFFILIATE_CODE";
+/** Promo arena — BC.Game & Rollbit links live here only. */
+export const PROMO_PAGE_HREF = "/bonus";
+
+/** @deprecated Use PROMO_PAGE_HREF */
+export const AFFILIATE_HREF = PROMO_PAGE_HREF;
 
 export type BonusType =
   | "welcome"
@@ -14,10 +18,8 @@ export type BonusType =
   | "featured_slider";
 
 export function buildReferralLink(username?: string | null): string {
-  if (!username) return AFFILIATE_HREF;
-  const url = new URL(AFFILIATE_HREF);
-  url.searchParams.set("r", username);
-  return url.toString();
+  if (!username) return PROMO_PAGE_HREF;
+  return `${PROMO_PAGE_HREF}?ref=${encodeURIComponent(username)}`;
 }
 
 export async function trackAffiliateClick(

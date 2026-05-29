@@ -41,7 +41,8 @@ export const FEATURED_SLIDE_THEMES: Record<FeaturedSlideId, FeaturedSlideTheme> 
       overlay:
         "repeating-linear-gradient(-12deg, transparent, transparent 14px, rgba(212,160,23,0.04) 14px, rgba(212,160,23,0.04) 15px)",
       titleColor: "#d4a017",
-      ctaKind: "affiliate",
+      ctaKind: "internal",
+      ctaHref: "/bonus",
       ctaClassName:
         "bg-[#d4a017] text-black hover:bg-[#e6b422] hover:shadow-[0_0_24px_rgba(212,160,23,0.45)]",
       visual: <SheriffStar />,
@@ -61,7 +62,8 @@ export const FEATURED_SLIDE_THEMES: Record<FeaturedSlideId, FeaturedSlideTheme> 
     sweetBonanza: {
       background: "linear-gradient(135deg, #1a0a1a 0%, #060d1f 72%)",
       titleColor: "#e879f9",
-      ctaKind: "affiliate",
+      ctaKind: "internal",
+      ctaHref: "/bonus",
       ctaClassName:
         "bg-[#e879f9] text-black hover:bg-[#f0abfc] hover:shadow-[0_0_24px_rgba(232,121,249,0.4)]",
       visual: <CandyVisual />,
@@ -69,7 +71,8 @@ export const FEATURED_SLIDE_THEMES: Record<FeaturedSlideId, FeaturedSlideTheme> 
     gates: {
       background: "linear-gradient(135deg, #0d0a1a 0%, #060d1f 72%)",
       titleColor: "#f59e0b",
-      ctaKind: "affiliate",
+      ctaKind: "internal",
+      ctaHref: "/bonus",
       ctaClassName:
         "bg-[#f59e0b] text-black hover:bg-[#fbbf24] hover:shadow-[0_0_24px_rgba(245,158,11,0.45)]",
       visual: <LightningVisual />,

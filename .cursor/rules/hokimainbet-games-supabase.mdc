@@ -10,7 +10,7 @@ alwaysApply: false
 
 - Demo mod — gerçek para yok, sanal bakiye
 - Her oyun sayfasında sağ üst: **Main dengan Uang Asli →** CTA
-- CTA href: `https://stake.com/?c=AFFILIATE_CODE` (placeholder)
+- CTA href: `/bonus` (promo page with BC.Game & Rollbit links)
 - Skor oturum sonunda `game_scores` tablosuna kayıt
 - Sadece giriş yapmış kullanıcılar oynayabilir
 

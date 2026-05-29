@@ -10,7 +10,7 @@ import {
   type FeaturedSlideId,
 } from "@/components/ui/featured-slider/featuredSlides";
 import { Link } from "@/i18n/navigation";
-import { AFFILIATE_HREF, trackAffiliateClick } from "@/lib/affiliate";
+import { PROMO_PAGE_HREF, trackAffiliateClick } from "@/lib/affiliate";
 import { useAuth } from "@/components/providers/AuthProvider";
 import { cn } from "@/lib/utils";
 
@@ -104,16 +104,15 @@ function FeaturedSlideCard({ slideId }: FeaturedSlideCardProps) {
           </div>
 
           {theme.ctaKind === "affiliate" ? (
-            <a
-              href={AFFILIATE_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={PROMO_PAGE_HREF}
+              className="inline-block"
               onClick={() => {
                 void trackAffiliateClick("featured_slider", locale, user?.id);
               }}
             >
               {ctaButton}
-            </a>
+            </Link>
           ) : (
             <Link
               href={theme.ctaHref ?? "/games/crash"}
