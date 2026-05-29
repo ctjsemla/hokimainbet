@@ -31,16 +31,26 @@ interface AuthContextValue {
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
+const PROFILE_FETCH_TIMEOUT_MS = 8_000;
+
 async function fetchProfileForUser(userId: string): Promise<Profile | null> {
   const supabase = createBrowserClient();
-  const { data, error } = await supabase
-    .from("profiles")
-    .select("*")
-    .eq("id", userId)
-    .maybeSingle();
+  try {
+    const { data, error } = await Promise.race([
+      supabase.from("profiles").select("*").eq("id", userId).maybeSingle(),
+      new Promise<never>((_, reject) => {
+        setTimeout(
+          () => reject(new Error("profile fetch timeout")),
+          PROFILE_FETCH_TIMEOUT_MS,
+        );
+      }),
+    ]);
 
-  if (error) throw error;
-  return data;
+    if (error) throw error;
+    return data;
+  } catch {
+    return null;
+  }
 }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -105,11 +115,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange(
-      async (_event: AuthChangeEvent, session: Session | null) => {
-        await syncSession(session);
-      },
-    );
+    } = supabase.auth.onAuthStateChange((_event: AuthChangeEvent, session) => {
+      // Defer so signInWithPassword is not blocked by profile fetch (Supabase deadlock).
+      setTimeout(() => {
+        void syncSession(session);
+      }, 0);
+    });
 
     return () => subscription.unsubscribe();
   }, [applyProfile, mounted]);

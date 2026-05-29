@@ -2,6 +2,17 @@ import { createBrowserClient, isSupabaseConfigured } from "@/lib/supabase";
 import type { Profile } from "@/types/database.types";
 import { DEMO_WELCOME_BALANCE } from "@/lib/balance";
 
+const AUTH_TIMEOUT_MS = 12_000;
+
+function withAuthTimeout<T>(promise: PromiseLike<T>): Promise<T> {
+  return Promise.race([
+    Promise.resolve(promise),
+    new Promise<T>((_, reject) => {
+      setTimeout(() => reject(new Error("AUTH_TIMEOUT")), AUTH_TIMEOUT_MS);
+    }),
+  ]);
+}
+
 function getClient() {
   if (!isSupabaseConfigured) {
     throw new Error(
@@ -69,20 +80,20 @@ export async function signUp(
   }
 
   if (data.session) {
-    await ensureProfile(data.user.id, username);
+    void ensureProfile(data.user.id, username);
     return data;
   }
 
   // Force immediate session for demo-mode onboarding.
-  // If dashboard still requires confirmation, this will fail and surface clearly.
-  const { data: signInData, error: signInError } =
-    await supabase.auth.signInWithPassword({
+  const { data: signInData, error: signInError } = await withAuthTimeout(
+    supabase.auth.signInWithPassword({
       email: normalizedEmail,
       password,
-    });
+    }),
+  );
 
   if (!signInError && signInData.session) {
-    await ensureProfile(data.user.id, username);
+    void ensureProfile(data.user.id, username);
     return signInData;
   }
   if (signInError) throw signInError;
@@ -93,15 +104,17 @@ export async function signIn(email: string, password: string) {
   const supabase = getClient();
   const normalizedEmail = email.trim().toLowerCase();
 
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: normalizedEmail,
-    password,
-  });
+  const { data, error } = await withAuthTimeout(
+    supabase.auth.signInWithPassword({
+      email: normalizedEmail,
+      password,
+    }),
+  );
 
   if (error) throw error;
   if (data.user) {
     const username = (data.user.user_metadata?.username as string | undefined) ?? null;
-    await ensureProfile(data.user.id, username);
+    void ensureProfile(data.user.id, username);
   }
   return data;
 }
