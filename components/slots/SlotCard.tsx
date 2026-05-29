@@ -2,7 +2,7 @@
 
 import { m } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { SlotCoverArt } from "@/components/slots/SlotCoverArt";
+import { SlotGameVisual } from "@/components/slots/SlotGameVisual";
 import type { SlotGame } from "@/types/slots.types";
 import { cn } from "@/lib/utils";
 
@@ -64,7 +64,7 @@ export function SlotCard({ slot, onPlay, compact = false, index = 0 }: SlotCardP
           compact ? "h-[160px]" : "h-[200px]",
         )}
       >
-        <SlotCoverArt slotId={slot.id} />
+        <SlotGameVisual slot={slot} />
       </div>
 
       <div className={cn("rounded-b-xl bg-navy-800", compact ? "p-3" : "p-4")}>

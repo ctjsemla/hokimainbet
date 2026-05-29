@@ -223,20 +223,24 @@
   "slots": {
     "title": "SLOT DEMO",
     "subtitle": "Play the world's most popular slots for free — no deposit required",
-    "gamesAvailable": "15 Games Available",
+    "gamesAvailable": "{count} Games Available",
     "filterAll": "All",
     "filterPragmatic": "Pragmatic Play",
     "filterHacksaw": "Hacksaw Gaming",
+    "filterNolimit": "Nolimit City",
     "rtp": "RTP",
     "maxWin": "Max",
     "playDemo": "PLAY DEMO",
     "homeHeading": "POPULAR SLOTS",
     "homeSubtitle": "Free demos from the world's top providers",
-    "viewAll": "View All 15 Games →",
+    "viewAll": "View All {count} Games →",
     "loading": "Loading game...",
     "close": "Close",
     "errorTitle": "⚠️ Game unavailable",
-    "errorBody": "This demo could not load in your browser. Play with real money for full access."
+    "errorBody": "This demo could not load in your browser. Play with real money for full access.",
+    "demoPrompt": "Click the button below to load the free demo in your browser.",
+    "fallbackBc": "BC.GAME",
+    "fallbackRollbit": "ROLLBIT"
   },
   "crash": {
     "betAmount": "Bet Amount",

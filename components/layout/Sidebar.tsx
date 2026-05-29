@@ -194,9 +194,16 @@ function ProviderBadge({ provider }: { provider: SlotProvider }) {
       </span>
     );
   }
+  if (provider === "Hacksaw Gaming") {
+    return (
+      <span className="shrink-0 rounded bg-navy-700/80 px-1.5 py-0.5 font-sans text-[9px] font-bold uppercase tracking-wide text-[#94a3b8]">
+        HG
+      </span>
+    );
+  }
   return (
-    <span className="shrink-0 rounded bg-slate-400/10 px-1.5 py-0.5 font-sans text-[9px] font-bold uppercase tracking-wide text-slate-400/60">
-      HG
+    <span className="shrink-0 rounded bg-orange-500/10 px-1.5 py-0.5 font-sans text-[9px] font-bold uppercase tracking-wide text-orange-500/70">
+      NC
     </span>
   );
 }
@@ -210,7 +217,7 @@ interface SlotGameNavItemProps {
 function SlotGameNavItem({ slot, isActive, onNavigate }: SlotGameNavItemProps) {
   return (
     <Link
-      href={`/games/slots?play=${slot.id}`}
+      href={`/games/slots?play=${slot.slug}`}
       onClick={onNavigate}
       className={cn(
         "sidebar-game-row nav-link-nudge group relative flex min-h-11 items-center gap-2 py-2.5 pl-10 pr-3 transition-all duration-150 ease-out",
@@ -522,9 +529,9 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                 <div className="sidebar-slots-scroll">
                   {slots.map((slot) => (
                     <SlotGameNavItem
-                      key={slot.id}
+                      key={slot.slug}
                       slot={slot}
-                      isActive={isSlotsActive && playId === slot.id}
+                      isActive={isSlotsActive && playId === slot.slug}
                       onNavigate={onClose}
                     />
                   ))}

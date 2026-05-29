@@ -223,20 +223,24 @@
   "slots": {
     "title": "SLOT DEMO",
     "subtitle": "Mainkan slot terpopuler dunia secara gratis — tanpa deposit",
-    "gamesAvailable": "15 Permainan Tersedia",
+    "gamesAvailable": "{count} Permainan Tersedia",
     "filterAll": "Semua",
     "filterPragmatic": "Pragmatic Play",
     "filterHacksaw": "Hacksaw Gaming",
+    "filterNolimit": "Nolimit City",
     "rtp": "RTP",
     "maxWin": "Max",
     "playDemo": "MAINKAN DEMO",
     "homeHeading": "SLOT POPULER",
     "homeSubtitle": "Demo gratis dari provider terbaik dunia",
-    "viewAll": "Lihat Semua 15 Game →",
+    "viewAll": "Lihat Semua {count} Game →",
     "loading": "Memuat game...",
     "close": "Tutup",
     "errorTitle": "⚠️ Game tidak tersedia",
-    "errorBody": "Demo tidak dapat dimuat di peramban ini. Main dengan uang asli untuk akses penuh."
+    "errorBody": "Demo tidak dapat dimuat di peramban ini. Main dengan uang asli untuk akses penuh.",
+    "demoPrompt": "Klik tombol di bawah untuk memuat demo gratis di peramban ini.",
+    "fallbackBc": "BC.GAME",
+    "fallbackRollbit": "ROLLBIT"
   },
   "crash": {
     "betAmount": "Jumlah Taruhan",

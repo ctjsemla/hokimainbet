@@ -6,7 +6,7 @@ import { useState } from "react";
 import { SlotCard } from "@/components/slots/SlotCard";
 import { SlotPlayerModal } from "@/components/slots/SlotPlayerModal";
 import { Link } from "@/i18n/navigation";
-import { getHomeFeaturedSlots } from "@/lib/slotsData";
+import { getHomeFeaturedSlots, slots } from "@/lib/slotsData";
 import type { SlotGame } from "@/types/slots.types";
 
 export function HomeSlotsSection() {
@@ -33,14 +33,14 @@ export function HomeSlotsSection() {
           href="/games/slots"
           className="font-sans text-sm font-medium text-orange-500 transition hover:text-orange-400"
         >
-          {t("viewAll")}
+          {t("viewAll", { count: slots.length })}
         </Link>
       </m.header>
 
       <div className="-mx-6 flex gap-4 overflow-x-auto px-6 pb-2 md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:px-0 lg:grid-cols-4">
         {featured.map((slot, index) => (
           <SlotCard
-            key={slot.id}
+            key={slot.slug}
             slot={slot}
             compact
             index={index}

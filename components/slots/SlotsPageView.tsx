@@ -11,12 +11,15 @@ import { getSlotById, slots } from "@/lib/slotsData";
 import type { SlotFilter, SlotGame } from "@/types/slots.types";
 import { cn } from "@/lib/utils";
 
-const FILTERS: { key: SlotFilter; labelKey: "filterAll" | "filterPragmatic" | "filterHacksaw" }[] =
-  [
-    { key: "all", labelKey: "filterAll" },
-    { key: "Pragmatic Play", labelKey: "filterPragmatic" },
-    { key: "Hacksaw Gaming", labelKey: "filterHacksaw" },
-  ];
+const FILTERS: {
+  key: SlotFilter;
+  labelKey: "filterAll" | "filterPragmatic" | "filterHacksaw" | "filterNolimit";
+}[] = [
+  { key: "all", labelKey: "filterAll" },
+  { key: "Pragmatic Play", labelKey: "filterPragmatic" },
+  { key: "Hacksaw Gaming", labelKey: "filterHacksaw" },
+  { key: "Nolimit City", labelKey: "filterNolimit" },
+];
 
 export function SlotsPageView() {
   const t = useTranslations("slots");
@@ -45,7 +48,7 @@ export function SlotsPageView() {
   const handlePlay = useCallback(
     (slot: SlotGame) => {
       setActiveSlot(slot);
-      router.replace(`/games/slots?play=${slot.id}`, { scroll: false });
+      router.replace(`/games/slots?play=${slot.slug}`, { scroll: false });
     },
     [router],
   );
@@ -82,7 +85,7 @@ export function SlotsPageView() {
           transition={{ delay: 0.1 }}
           className="inline-flex w-fit rounded-full bg-navy-800 px-4 py-2 font-sans text-sm font-medium text-orange-500"
         >
-          {t("gamesAvailable")}
+          {t("gamesAvailable", { count: slots.length })}
         </m.span>
       </header>
 
@@ -114,7 +117,7 @@ export function SlotsPageView() {
         >
           {filtered.map((slot, index) => (
             <SlotCard
-              key={slot.id}
+              key={slot.slug}
               slot={slot}
               index={index}
               onPlay={handlePlay}

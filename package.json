@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "dev:clean": "rm -rf .next && next dev",
+    "fetch-slots": "node --env-file=.env.local scripts/fetchSlots.mjs",
+    "prebuild": "npm run fetch-slots",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

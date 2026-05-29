@@ -1,4 +1,3 @@
-import type { SlotGame } from "@/types/slots.types";
 import {
   BeatTheBobbiesCover,
   BookOfTimeCover,
@@ -20,10 +19,32 @@ import {
 } from "@/components/slots/covers/pragmaticCovers";
 
 interface SlotCoverArtProps {
-  slotId: SlotGame["id"];
+  slug: string;
 }
 
-const coverMap: Record<SlotGame["id"], () => JSX.Element> = {
+export const CUSTOM_COVER_SLUGS = [
+  "gates-of-gatot-kaca",
+  "gates-of-olympus",
+  "sweet-bonanza",
+  "starlight-princess",
+  "big-bass-bonanza",
+  "the-dog-house",
+  "sugar-rush",
+  "wanted-dead-or-a-wild",
+  "chaos-crew",
+  "book-of-time",
+  "eye-of-medusa",
+  "rip-city",
+  "le-bandit",
+  "cash-quest",
+  "beat-the-bobbies",
+] as const;
+
+export function hasCustomCover(slug: string): boolean {
+  return (CUSTOM_COVER_SLUGS as readonly string[]).includes(slug);
+}
+
+const coverMap: Record<string, () => JSX.Element> = {
   "gates-of-gatot-kaca": GatesOfGatotKacaCover,
   "gates-of-olympus": GatesOfOlympusCover,
   "sweet-bonanza": SweetBonanzaCover,
@@ -41,10 +62,10 @@ const coverMap: Record<SlotGame["id"], () => JSX.Element> = {
   "beat-the-bobbies": BeatTheBobbiesCover,
 };
 
-export function SlotCoverArt({ slotId }: SlotCoverArtProps) {
-  const Cover = coverMap[slotId];
+export function SlotCoverArt({ slug }: SlotCoverArtProps) {
+  const Cover = coverMap[slug];
   if (!Cover) {
-    return <div className="h-full w-full bg-navy-950" />;
+    return null;
   }
   return <Cover />;
 }
