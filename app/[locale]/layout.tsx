@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { AppShell } from "@/components/layout/AppShell";
 import { AuthProvider } from "@/components/providers/AuthProvider";
@@ -43,6 +44,9 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={fontVariables} suppressHydrationWarning>
+      <head>
+        <GoogleAnalytics />
+      </head>
       <body
         className="bg-navy-950 font-sans text-white antialiased"
         suppressHydrationWarning
